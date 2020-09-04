@@ -113,6 +113,8 @@ class Px4Controller:
         self.current_gps = None
         self.origin_gps = None
         self.init_gps = True
+
+        
         
         # 当前位置距离航点的距离
         self.current_waypoint_dist = 0
