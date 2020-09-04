@@ -1,17 +1,14 @@
 # -*- coding: utf-8 -*-
 # 引入ros的Python包
 import rospy
-from mavros_msgs.msg import GlobalPositionTarget, State, PositionTarget, OverrideRCIn, RCIn, RCOut, VFR_HUD
-from mavros_msgs.srv import CommandBool, CommandTOL, SetMode
-from geometry_msgs.msg import PoseStamped, Twist, PointStamped
+from mavros_msgs.msg import State, OverrideRCIn, RCIn, RCOut, VFR_HUD, HomePosition
+from mavros_msgs.srv import CommandBool,  SetMode
 from sensor_msgs.msg import Imu, NavSatFix, PointCloud2
-
-from std_msgs.msg import Float32, Float64, String
+from visualization_msgs.msg import *
 
 # 引入点云信息
 import sensor_msgs.point_cloud2 as pc2
 
-import time
 from pyquaternion import Quaternion
 import math
 from threading import Thread
@@ -34,11 +31,8 @@ import DiscreteGridUtils
 import CenterPointEdge
 
 import LineSegment
-# 线程
-import threading
 
 import matplotlib.pyplot as plt
-import matplotlib
 import time
 
 import scipy.stats as st
@@ -54,7 +48,9 @@ from Logger import Logger
 # 角度计算'
 import angle_utils
 
-import gps_utiles 
+import gps_utiles
+
+
 
 class Px4Controller:
 
@@ -112,34 +108,21 @@ class Px4Controller:
 
         # 当前gps 位置
         self.current_gps = None
-        self.origin_gps = None
-        self.init_gps = True
+        # 返航点位置
+        self.home_gps = None
 
-        
-        
         # 当前位置距离航点的距离
         self.current_waypoint_dist = 0
-        self.local_pose = None
-        self.current_state = None
         self.current_heading = 1
-        self.takeoff_height = 3
-        self.local_enu_position = None
-        self.cur_target_pose = None
-        self.global_target = None
-        self.received_new_task = False
         self.arm_state = False
         # 手动模式切换状态
         self.manual_state = False
-        self.received_imu = False
         self.frame = "BODY"
         self.state = None
-
         #
         self.left_parallel_yaw = None
         # 点云数据
         self.point_cloud = None
-        # 设置点云锁
-        self.point_set_mutex = threading.Lock()
 
         # 设置直线斜率
         self.line = None
@@ -148,45 +131,39 @@ class Px4Controller:
         self.cloud_points = []
 
         self.num = 1
-        # 延边模式下 航行状态 
-        # 0 前往航点起始点
-        # 1 沿航线航行
-        # 2 前往过iao桥航点
-        # 3 保持航向进行过桥
-        # 4 过桥完成 前往过桥后与当前航向不超过70度的航点
-        # 5 任务完成
-        self.sailing_status = 0
+
+
         '''
         ros subscribers
         '''
-        # self.local_pose_sub = rospy.Subscriber("/mavros/local_position/pose", PoseStamped, self.local_pose_callback)
-        self.imu_sub = rospy.Subscriber(
-            "/mavros/imu/data", Imu, self.imu_callback)
-        self.rc_in_sub = rospy.Subscriber(
-            "/mavros/rc/in", RCIn, self.rc_in_callback)
+        # 获取imu 信号
+        rospy.Subscriber("/mavros/imu/data", Imu, self.imu_callback)
 
-        self.rc_out_sub = rospy.Subscriber(
-            "/mavros/rc/out", RCOut, self.rc_out_callback)
+        # 获取遥控器输入信号
+        rospy.Subscriber("/mavros/rc/in", RCIn, self.rc_in_callback)
+        #  获取遥控最终输出信号
+        rospy.Subscriber("/mavros/rc/out", RCOut, self.rc_out_callback)
+        # 获取地速
+        rospy.Subscriber("/mavros/vfr_hud", VFR_HUD, self.vfr_hub_callback)
+        # 获取GPS位置
+        rospy.Subscriber("/mavros/global_position/global",
+                         NavSatFix, self.GPS_callback)
+        # 获取apm 连接 状态
+        rospy.Subscriber("/mavros/state", State, self.State_callback)
+        # 获取点云数据
+        rospy.Subscriber("/voxel_grid/points", PointCloud2,
+                         self.point_cloud_callback)
+        # 获取home 返航点位置
+        rospy.Subscriber("/mavros/home_position/home",
+                         HomePosition, self.home_GPS_callback)
 
-        self.vfr_hud_sub = rospy.Subscriber(
-            "/mavros/vfr_hud", VFR_HUD, self.vfr_hub_callback)
-        # 获取罗盘值
-        self.compass_hdg_sub = rospy.Subscriber(
-            "/mavros/global_position/compass_hdg", Float64, self.compass_hdg_callback)
-
-        # 获取罗盘值
-        self.GPS_sub = rospy.Subscriber(
-            "/mavros/global_position/global", NavSatFix, self.GPS_callback)
-
-        # 获取apm 状态
-        self.state_sub = rospy.Subscriber(
-            "/mavros/state", State, self.State_callback)
         '''
         ros publishers
         '''
         # rc重载发布
         self.rc_override_pub = rospy.Publisher(
             'mavros/rc/override', OverrideRCIn, queue_size=10)
+        self.marker_pub = rospy.Publisher("/track/heading", Marker, queue_size=10)
         '''
         ros services
         '''
@@ -194,10 +171,10 @@ class Px4Controller:
         self.flightModeService = rospy.ServiceProxy(
             '/mavros/set_mode', SetMode)
 
-        self.octomap_cells_vis = rospy.Subscriber(
-            "/voxel_grid/points", PointCloud2, self.point_cloud_callback)  # 订阅八叉树地图
-
         print("Px4 Controller Initialized!")
+
+    
+
 
     def start(self, debug=False):
         rcmsg = OverrideRCIn()
@@ -223,48 +200,53 @@ class Px4Controller:
                     if first_cortron == False:
                         self.log.logger.info("延边模式")
                         # 首次切入延边状态进入前往地一个航点
-                        self.sailing_status = 0
                         first_cortron = True
                         i = 0
                         waypoint = self.current_gps
-                    
+
                     # 判断当前位置与航点距离多少
                     self.current_waypoint_dist = gps_utiles.gps_get_distance(
                         self.current_gps, waypoint)
 
-                    self.current_heading = gps_utiles.gps_get_angle( self.current_gps, waypoint)
+                    self.current_heading = gps_utiles.gps_get_angle(
+                        self.current_gps, waypoint)
 
-                    
                     if bridge_status == 3:
                         min_bridge_waypoints = self.get_min_bridge()
                         # 获取距离当前位置与最近桥的距离以及桥本身航点
-                        if  len(min_bridge_waypoints) > 0:
-                            bridge_heading = gps_utiles.gps_get_angle(  min_bridge_waypoints[0], min_bridge_waypoints[-1])
-                            bridge_distance = gps_utiles.gps_get_distance(  min_bridge_waypoints[0], min_bridge_waypoints[-1])
-                            self.log.logger.info(  "开始进行过桥,桥长" + str(bridge_distance) + "米 ,桥起始点: "+str(min_bridge_waypoints[0]))
+                        if len(min_bridge_waypoints) > 0:
+                            bridge_heading = gps_utiles.gps_get_angle(
+                                min_bridge_waypoints[0], min_bridge_waypoints[-1])
+                            bridge_distance = gps_utiles.gps_get_distance(
+                                min_bridge_waypoints[0], min_bridge_waypoints[-1])
+                            self.log.logger.info(
+                                "开始进行过桥,桥长" + str(bridge_distance) + "米 ,桥起始点: "+str(min_bridge_waypoints[0]))
                             # 满足过桥行动
                             start_bridge = True
                             bridge_time = 0
                             bridge_status = 0
-                        
+
                         elif self.current_waypoint_dist < self.min_waypoint_distance:
-                    
-                            if i < len(self.kml_dict["left00"])  :
+
+                            if i < len(self.kml_dict["left00"]):
                                 waypoint = self.kml_dict["left00"][i]
                                 i += 1
-                                self.log.logger.info( "前往第"+str(i)+"个航点:"+str(waypoint))
-                            
-                            elif i == len(self.kml_dict["left00"]) :
-                                self.log.logger.info( "到达第"+str(i)+"个航点:"+str(waypoint))
-                                self.log.logger.info("任务结束")
-                                i+=1
+                                self.log.logger.info(
+                                    "前往第"+str(i)+"个航点:"+str(waypoint))
 
+                            elif i == len(self.kml_dict["left00"]):
+                                self.log.logger.info(
+                                    "到达第"+str(i)+"个航点:"+str(waypoint))
+                                self.log.logger.info("任务结束")
+                                i += 1
 
                     # 若当前位置距离桥第一个点小于最小航点距离则进行
                     elif bridge_status == 0:
-                        current_bridge_heading = gps_utiles.gps_get_angle(  self.current_gps, min_bridge_waypoints[0])
-                        current_bridge_distance = gps_utiles.gps_get_distance( self.current_gps, min_bridge_waypoints[0])
-                        
+                        current_bridge_heading = gps_utiles.gps_get_angle(
+                            self.current_gps, min_bridge_waypoints[0])
+                        current_bridge_distance = gps_utiles.gps_get_distance(
+                            self.current_gps, min_bridge_waypoints[0])
+
                         self.set_yaw_pid_control(
                             current_bridge_heading, rcmsg)
                         if current_bridge_distance < self.min_waypoint_distance:
@@ -272,25 +254,25 @@ class Px4Controller:
                             start_time = time.time()
 
                     elif bridge_status == 1:
-                      
+
                         self.set_yaw_pid_control(bridge_heading, rcmsg)
                         bridge_time = time.time()-start_time
-                        if   bridge_time > bridge_distance / self.ground_speed:
+                        if bridge_time > bridge_distance / self.ground_speed:
                             self.log.logger.info(
                                 "已通过桥,耗时"+str(bridge_time)+"秒,桥末尾点: "+str(min_bridge_waypoints[-1]))
                             # 确定通过桥梁
-                            passing_bridge = False
                             bridge_status = 2
-                        
-                    elif bridge_status == 2 :
-                        if i < len(self.kml_dict["left00"])-1 and angle_utils.angle_different_0_360(self.current_heading,self.yaw) >90:
+
+                    elif bridge_status == 2:
+                        if i < len(self.kml_dict["left00"])-1 and angle_utils.angle_different_0_360(self.current_heading, self.yaw) > 90:
                             waypoint = self.kml_dict["left00"][i]
-                            self.log.logger.info( "跳过第"+str(i)+"个航点:"+str(waypoint))
+                            self.log.logger.info(
+                                "跳过第"+str(i)+"个航点:"+str(waypoint))
                             i += 1
                         else:
-                            self.log.logger.info( "前往第"+str(i)+"个航点:"+str(waypoint))
+                            self.log.logger.info(
+                                "前往第"+str(i)+"个航点:"+str(waypoint))
                             bridge_status = 3
-                
 
                     # self.log.logger.info( "current_heading: " + str(self.current_heading))
 
@@ -316,7 +298,7 @@ class Px4Controller:
                     if first_cortron:
                         self.log.logger.info("遥控模式")
                         first_cortron = False
-                        
+
                     rcmsg.channels[2] = 65535
                     rcmsg.channels[0] = self.rc_in[1]
 
@@ -353,7 +335,7 @@ class Px4Controller:
                     bridge_heading = gps_utiles.gps_get_angle(
                         self.kml_dict[key][-1], self.kml_dict[key][0])
 
-        if bridge_heading == None or angle_utils.angle_min_different_0_360(bridge_heading, self.yaw) > 70  :
+        if bridge_heading == None or angle_utils.angle_min_different_0_360(bridge_heading, self.yaw) > 70:
             min_bridge_waypoints = []
 
         # 返回当前位置与桥的航点位置
@@ -493,7 +475,7 @@ class Px4Controller:
         self.dist_pid.SetPoint = except_dist
         self.dist_pid.update(float(now_dist))
         self.dist_pid.sample_time = 0.1  # 采样间隔
-    
+
         except_yaw = int(parallel_yaw + self.dist_pid.output)  # 得到的期望yaw 值
         # 期望yaw 应在0-360 之间
         if except_yaw > 360:
@@ -548,8 +530,7 @@ class Px4Controller:
             rcmsg.channels[0] = 1000
 
 
-# 设置为手动模式
-
+    # 设置为手动模式
     def manual(self):
         if self.flightModeService(custom_mode='MANUAL'):
             return True
@@ -563,10 +544,6 @@ class Px4Controller:
     msg 罗盘获取到的yaw 值
     '''
 
-    def compass_hdg_callback(self, msg):
-        # self.yaw = msg.data
-        pass
-
     def point_cloud_callback(self, msg):
         '''
         获取点云信息 
@@ -574,6 +551,12 @@ class Px4Controller:
 
         self.cloud_points = list(pc2.read_points(
             msg, field_names=("x", "y", "z"), skip_nans=True))
+
+    def home_GPS_callback(self, msg):
+        '''
+            获取home_GPS位置 
+        '''
+        self.home_gps = (msg.geo.longitude, msg.geo.latitude)
 
     def get_dist_parallel_yaw(self):
         # 第一象限数
@@ -674,6 +657,55 @@ class Px4Controller:
         self.imu = msg
         heading = self.q2yaw(self.imu.orientation)
         self.yaw = (-heading / math.pi * 180.0 + 90) % 360
+        marker = self.create_marker() 
+        self.marker_pub.publish(marker)
+
+    def create_marker(self):
+            '''
+            创建，marker
+            '''
+            marker = Marker()
+
+            #指定Marker的参考框架
+            marker.header.frame_id = "base_link"
+            
+            #时间戳
+            marker.header.stamp = rospy.Time.now()
+            
+            #ns代表namespace，命名空间可以避免重复名字引起的错误
+            marker.ns = "boat_yaw"
+            
+            #Marker的id号
+            marker.id = 0
+            
+            #Marker的类型，有ARROW，CUBE等
+            marker.type = Marker.ARROW
+            
+            #Marker的尺寸，单位是m
+            marker.scale.x = -0.5
+            marker.scale.y = 0.1
+            marker.scale.z = 0.1
+            
+            #Marker的动作类型设置箭头
+            marker.action = Marker.ADD
+            
+            #Marker的位置姿态
+            marker.pose.position.x = 0.0
+            marker.pose.position.y = 0.0
+            marker.pose.position.z = 0.0
+            marker.pose.orientation.x = 0.0
+            marker.pose.orientation.y = 0.0
+            marker.pose.orientation.z = 0.0
+            marker.pose.orientation.w = 1.0
+            
+            #Marker的颜色和透明度
+            marker.color.r = 0.8
+            marker.color.g = 0.0
+            marker.color.b = 0.0
+            marker.color.a = 0.9
+            
+            #Marker被自动销毁之前的存活时间，rospy.Duration()意味着在程序结束之前一直存在
+            return marker
 
     # rc输入的回调函数
 
@@ -686,7 +718,6 @@ class Px4Controller:
     def rc_out_callback(self, msg):
         # 将rc输入的通道值赋给rc_in
         self.rc_out = msg.channels
-        
 
     # 速度回调函数
 
@@ -697,22 +728,6 @@ class Px4Controller:
     def GPS_callback(self, msg):
         '''
         获取GPS 信息
-        msg: 消息格式
-
-        header: 
-            seq: 110
-            stamp: 
-                secs: 1598234193
-                nsecs: 418708509
-            frame_id: "base_link" 
-        status: gps 状态
-            status: -1
-            service: 1
-        latitude: 0.0  纬度
-        longitude: 0.0  经度
-        altitude: 16.433    高度
-        position_covariance: [18446744065119.617, 0.0, 0.0, 0.0, 18446744065119.617, 0.0, 0.0, 0.0, 14184584949071.611] 位置协方差
-        position_covariance_type: 2
         '''
         self.current_gps = (msg.longitude, msg.latitude)
         self.GPS_status = msg.status.status
