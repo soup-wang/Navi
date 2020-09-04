@@ -54,6 +54,7 @@ from Logger import Logger
 # 角度计算'
 import angle_utils
 
+import gps_utiles 
 
 class Px4Controller:
 
@@ -228,18 +229,18 @@ class Px4Controller:
                         waypoint = self.current_gps
                     
                     # 判断当前位置与航点距离多少
-                    self.current_waypoint_dist = self.lat_and_lon_get_distance(
+                    self.current_waypoint_dist = gps_utiles.gps_get_distance(
                         self.current_gps, waypoint)
 
-                    self.current_heading = self.lat_and_lon_get_angle1( self.current_gps, waypoint)
+                    self.current_heading = gps_utiles.gps_get_angle( self.current_gps, waypoint)
 
-
+                    
                     if bridge_status == 3:
                         min_bridge_waypoints = self.get_min_bridge()
                         # 获取距离当前位置与最近桥的距离以及桥本身航点
                         if  len(min_bridge_waypoints) > 0:
-                            bridge_heading = self.lat_and_lon_get_angle1(  min_bridge_waypoints[0], min_bridge_waypoints[-1])
-                            bridge_distance = self.lat_and_lon_get_distance(  min_bridge_waypoints[0], min_bridge_waypoints[-1])
+                            bridge_heading = gps_utiles.gps_get_angle(  min_bridge_waypoints[0], min_bridge_waypoints[-1])
+                            bridge_distance = gps_utiles.gps_get_distance(  min_bridge_waypoints[0], min_bridge_waypoints[-1])
                             self.log.logger.info(  "开始进行过桥,桥长" + str(bridge_distance) + "米 ,桥起始点: "+str(min_bridge_waypoints[0]))
                             # 满足过桥行动
                             start_bridge = True
@@ -261,8 +262,8 @@ class Px4Controller:
 
                     # 若当前位置距离桥第一个点小于最小航点距离则进行
                     elif bridge_status == 0:
-                        current_bridge_heading = self.lat_and_lon_get_angle1(  self.current_gps, min_bridge_waypoints[0])
-                        current_bridge_distance = self.lat_and_lon_get_distance( self.current_gps, min_bridge_waypoints[0])
+                        current_bridge_heading = gps_utiles.gps_get_angle(  self.current_gps, min_bridge_waypoints[0])
+                        current_bridge_distance = gps_utiles.gps_get_distance( self.current_gps, min_bridge_waypoints[0])
                         
                         self.set_yaw_pid_control(
                             current_bridge_heading, rcmsg)
@@ -335,21 +336,21 @@ class Px4Controller:
                 # self.log.logger.info("bridge")
                 # 获取桥的中线位置,当得到船距离桥只有15m 时进入过桥模式固定yaw值
 
-                start_bridge_distance = self.lat_and_lon_get_distance(
+                start_bridge_distance = gps_utiles.gps_get_distance(
                     self.current_gps, self.kml_dict[key][0])
-                end_bridge_distance = self.lat_and_lon_get_distance(
+                end_bridge_distance = gps_utiles.gps_get_distance(
                     self.current_gps, self.kml_dict[key][-1])
 
                 if start_bridge_distance < current_bridge_distance:
                     current_bridge_distance = start_bridge_distance
                     min_bridge_waypoints = self.kml_dict[key]
-                    bridge_heading = self.lat_and_lon_get_angle1(
+                    bridge_heading = gps_utiles.gps_get_angle(
                         self.kml_dict[key][0], self.kml_dict[key][-1])
 
                 if end_bridge_distance < current_bridge_distance:
                     current_bridge_distance = end_bridge_distance
                     min_bridge_waypoints = self.kml_dict[key][::-1]
-                    bridge_heading = self.lat_and_lon_get_angle1(
+                    bridge_heading = gps_utiles.gps_get_angle(
                         self.kml_dict[key][-1], self.kml_dict[key][0])
 
         if bridge_heading == None or angle_utils.angle_min_different_0_360(bridge_heading, self.yaw) > 70  :
@@ -357,42 +358,6 @@ class Px4Controller:
 
         # 返回当前位置与桥的航点位置
         return min_bridge_waypoints
-
-    def lat_and_lon_get_angle1(self, Waypoint_start, Waypoint_end):
-        '''
-        计算两个经纬度之间的方位角
-        Waypoint_start : 起始点(经度，纬度)
-        Waypoint_end ： 指向末尾点(经度，纬度)
-        '''
-
-        y = math.sin(Waypoint_end[0]-Waypoint_start[0]
-                     ) * math.cos(Waypoint_end[1])
-        x = math.cos(Waypoint_start[1])*math.sin(Waypoint_end[1]) - math.sin(Waypoint_start[1]) * \
-            math.cos(Waypoint_end[1]) * \
-            math.cos(Waypoint_end[0]-Waypoint_start[0])
-        brng = math.atan2(y, x)*180/math.pi
-
-        if brng < 0:
-            brng = brng + 360
-        return brng
-
-    def lat_and_lon_get_distance(self, Waypoint_start, Waypoint_end):
-        '''
-        计算两个经纬度之间的距离
-        Waypoint_start : 起始点(经度，纬度)
-        Waypoint_end ： 指向末尾点(经度，纬度)
-        '''
-        R = 6378137  # 地球半径
-        wps_y = Waypoint_start[1] * math.pi / 180.0
-        wpe_y = Waypoint_end[1] * math.pi / 180.0
-        a = wps_y - wpe_y
-        b = (Waypoint_start[0] - Waypoint_end[0]) * math.pi / 180.0
-
-        sa2 = math.sin(a / 2.0)
-        sb2 = math.sin(b / 2.0)
-        d = 2 * R * math.asin(math.sqrt(sa2 ** 2 +
-                                        math.cos(wps_y) * math.cos(wpe_y) * sb2 ** 2))
-        return d
 
     def read_kml_file(self, kml_path):
         '''
@@ -528,6 +493,7 @@ class Px4Controller:
         self.dist_pid.SetPoint = except_dist
         self.dist_pid.update(float(now_dist))
         self.dist_pid.sample_time = 0.1  # 采样间隔
+    
         except_yaw = int(parallel_yaw + self.dist_pid.output)  # 得到的期望yaw 值
         # 期望yaw 应在0-360 之间
         if except_yaw > 360:
