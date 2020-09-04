@@ -46,3 +46,15 @@ def gps_get_distance(Waypoint_start, Waypoint_end):
     d = 2 * R * math.asin(math.sqrt(sa2 ** 2 +
                                     math.cos(wps_y) * math.cos(wpe_y) * sb2 ** 2))
     return d
+
+
+def gps_to_meter_coord(current_gps, origin_gps=(121, 31)):
+    '''
+    gps,坐标转化到米坐标系
+    current_gps 需要转化的坐标
+    origin_gps  坐标零点
+    '''
+    angle = gps_get_angle(current_gps, origin_gps)*math.pi/180
+    distance = gps_get_distance(current_gps, origin_gps)
+    mete_cood = (distance*math.cos(angle), distance*math.sin(angle))
+    return mete_cood
