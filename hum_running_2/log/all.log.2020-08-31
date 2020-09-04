@@ -1,0 +1,465 @@
+2020-08-31 10:39:47,986 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:300] - INFO: 遥控模式
+2020-08-31 10:39:55,050 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:210] - INFO: 延边模式
+2020-08-31 10:39:55,056 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.172183636
+2020-08-31 10:39:55,057 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading19.0720233671
+2020-08-31 10:39:55,058 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:265] - INFO: 到达第0个航点:(121.4212046, 31.1286342)
+2020-08-31 10:39:55,162 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.172183636
+2020-08-31 10:39:55,166 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading19.0720233671
+2020-08-31 10:39:55,270 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.172183636
+2020-08-31 10:39:55,271 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading19.0720233671
+2020-08-31 10:39:55,372 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.172183636
+2020-08-31 10:39:55,373 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading19.0720233671
+2020-08-31 10:39:55,477 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.172183636
+2020-08-31 10:39:55,482 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading19.0720233671
+2020-08-31 10:39:55,586 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.374526571
+2020-08-31 10:39:55,589 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.862782854
+2020-08-31 10:39:55,703 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.374526571
+2020-08-31 10:39:55,704 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.862782854
+2020-08-31 10:39:55,814 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.374526571
+2020-08-31 10:39:55,816 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.862782854
+2020-08-31 10:39:55,923 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.374526571
+2020-08-31 10:39:55,923 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.862782854
+2020-08-31 10:39:56,028 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.550594477
+2020-08-31 10:39:56,032 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.6822222586
+2020-08-31 10:39:56,133 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.550594477
+2020-08-31 10:39:56,133 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.6822222586
+2020-08-31 10:39:56,235 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.550594477
+2020-08-31 10:39:56,238 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.6822222586
+2020-08-31 10:39:56,345 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.550594477
+2020-08-31 10:39:56,347 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.6822222586
+2020-08-31 10:39:56,455 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.550594477
+2020-08-31 10:39:56,456 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.6822222586
+2020-08-31 10:39:56,558 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.688618362
+2020-08-31 10:39:56,561 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.5431226518
+2020-08-31 10:39:56,665 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.688618362
+2020-08-31 10:39:56,667 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.5431226518
+2020-08-31 10:39:56,768 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.688618362
+2020-08-31 10:39:56,769 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.5431226518
+2020-08-31 10:39:56,872 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.688618362
+2020-08-31 10:39:56,880 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.5431226518
+2020-08-31 10:39:56,984 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.688618362
+2020-08-31 10:39:56,984 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.5431226518
+2020-08-31 10:39:57,085 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.772878945
+2020-08-31 10:39:57,086 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.462191301
+2020-08-31 10:39:57,186 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.772878945
+2020-08-31 10:39:57,187 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.462191301
+2020-08-31 10:39:57,289 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.772878945
+2020-08-31 10:39:57,291 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.462191301
+2020-08-31 10:39:57,397 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.772878945
+2020-08-31 10:39:57,401 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.462191301
+2020-08-31 10:39:57,505 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.810780483
+2020-08-31 10:39:57,511 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.4312587845
+2020-08-31 10:39:57,615 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.810780483
+2020-08-31 10:39:57,619 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.4312587845
+2020-08-31 10:39:57,727 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.810780483
+2020-08-31 10:39:57,727 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.4312587845
+2020-08-31 10:39:57,831 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.810780483
+2020-08-31 10:39:57,832 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.4312587845
+2020-08-31 10:39:57,933 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.810780483
+2020-08-31 10:39:57,936 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.4312587845
+2020-08-31 10:39:58,046 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.819489183
+2020-08-31 10:39:58,047 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.4320162274
+2020-08-31 10:39:58,148 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.819489183
+2020-08-31 10:39:58,149 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.4320162274
+2020-08-31 10:39:58,252 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.819489183
+2020-08-31 10:39:58,257 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.4320162274
+2020-08-31 10:39:58,367 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.819489183
+2020-08-31 10:39:58,374 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.4320162274
+2020-08-31 10:39:58,480 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.819489183
+2020-08-31 10:39:58,486 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.4320162274
+2020-08-31 10:39:58,588 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.798342076
+2020-08-31 10:39:58,596 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.465242931
+2020-08-31 10:39:58,706 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.798342076
+2020-08-31 10:39:58,710 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.465242931
+2020-08-31 10:39:58,825 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.798342076
+2020-08-31 10:39:58,826 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.465242931
+2020-08-31 10:39:58,926 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.798342076
+2020-08-31 10:39:58,927 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.465242931
+2020-08-31 10:39:59,027 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.767760355
+2020-08-31 10:39:59,028 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.5088739589
+2020-08-31 10:39:59,130 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.767760355
+2020-08-31 10:39:59,131 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.5088739589
+2020-08-31 10:39:59,241 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.767760355
+2020-08-31 10:39:59,242 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.5088739589
+2020-08-31 10:39:59,344 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.767760355
+2020-08-31 10:39:59,344 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.5088739589
+2020-08-31 10:39:59,445 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.767760355
+2020-08-31 10:39:59,455 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.5088739589
+2020-08-31 10:39:59,556 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.718332267
+2020-08-31 10:39:59,558 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.5731180609
+2020-08-31 10:39:59,662 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.718332267
+2020-08-31 10:39:59,664 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.5731180609
+2020-08-31 10:39:59,768 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.718332267
+2020-08-31 10:39:59,768 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.5731180609
+2020-08-31 10:39:59,869 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.718332267
+2020-08-31 10:39:59,869 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.5731180609
+2020-08-31 10:39:59,970 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.718332267
+2020-08-31 10:39:59,971 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.5731180609
+2020-08-31 10:40:00,072 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.668325024
+2020-08-31 10:40:00,072 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.6383976823
+2020-08-31 10:40:00,173 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.668325024
+2020-08-31 10:40:00,174 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.6383976823
+2020-08-31 10:40:00,275 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.668325024
+2020-08-31 10:40:00,276 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.6383976823
+2020-08-31 10:40:00,377 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.668325024
+2020-08-31 10:40:00,378 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.6383976823
+2020-08-31 10:40:00,480 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.668325024
+2020-08-31 10:40:00,482 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.6383976823
+2020-08-31 10:40:00,584 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.611401028
+2020-08-31 10:40:00,585 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.7115441096
+2020-08-31 10:40:00,688 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.611401028
+2020-08-31 10:40:00,689 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.7115441096
+2020-08-31 10:40:00,790 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.611401028
+2020-08-31 10:40:00,790 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.7115441096
+2020-08-31 10:40:00,892 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.611401028
+2020-08-31 10:40:00,895 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.7115441096
+2020-08-31 10:40:00,997 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.550424743
+2020-08-31 10:40:00,999 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.7894267632
+2020-08-31 10:40:01,103 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.550424743
+2020-08-31 10:40:01,110 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.7894267632
+2020-08-31 10:40:01,220 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.550424743
+2020-08-31 10:40:01,221 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.7894267632
+2020-08-31 10:40:01,327 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.550424743
+2020-08-31 10:40:01,334 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.7894267632
+2020-08-31 10:40:01,454 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.550424743
+2020-08-31 10:40:01,455 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.7894267632
+2020-08-31 10:40:01,556 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.491697129
+2020-08-31 10:40:01,558 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.8652848323
+2020-08-31 10:40:01,663 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.491697129
+2020-08-31 10:40:01,674 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.8652848323
+2020-08-31 10:40:01,778 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.491697129
+2020-08-31 10:40:01,782 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.8652848323
+2020-08-31 10:40:01,890 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.491697129
+2020-08-31 10:40:01,899 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.8652848323
+2020-08-31 10:40:02,002 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.425442186
+2020-08-31 10:40:02,005 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.9495739456
+2020-08-31 10:40:02,107 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.425442186
+2020-08-31 10:40:02,107 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.9495739456
+2020-08-31 10:40:02,209 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.425442186
+2020-08-31 10:40:02,210 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.9495739456
+2020-08-31 10:40:02,310 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.425442186
+2020-08-31 10:40:02,318 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.9495739456
+2020-08-31 10:40:02,444 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: start_current_bridge_heading162.425442186
+2020-08-31 10:40:02,446 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:328] - INFO: end_current_bridge_heading18.9495739456
+2020-08-31 10:40:02,548 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:300] - INFO: 遥控模式
+2020-08-31 10:41:39,500 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:300] - INFO: 遥控模式
+2020-08-31 10:41:42,027 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:210] - INFO: 延边模式
+2020-08-31 10:41:42,028 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:265] - INFO: 到达第0个航点:(121.421342, 31.1284831)
+2020-08-31 10:43:08,105 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:265] - INFO: 到达第1个航点:(121.422388871116, 31.12688208630769)
+2020-08-31 10:43:19,041 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:265] - INFO: 到达第2个航点:(121.4223389404201, 31.12700068451231)
+2020-08-31 10:43:24,045 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:265] - INFO: 到达第3个航点:(121.4222644829651, 31.12710193240835)
+2020-08-31 10:43:29,536 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:265] - INFO: 到达第4个航点:(121.4222491551472, 31.12722165959074)
+2020-08-31 10:43:31,063 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:265] - INFO: 到达第5个航点:(121.4222179149175, 31.12724652435526)
+2020-08-31 10:43:36,082 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:265] - INFO: 到达第6个航点:(121.4222009693027, 31.1273494563578)
+2020-08-31 10:43:40,559 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:265] - INFO: 到达第7个航点:(121.4221535089392, 31.12743876307533)
+2020-08-31 10:43:48,024 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:227] - INFO: 开始进行过桥,桥长9.86959311009米 ,桥起始点: (121.422154282497, 31.1276258628408)
+2020-08-31 10:43:55,759 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:235] - INFO: 已通过桥,耗时4.99361395836秒,桥末尾点: (121.4221156354597, 31.12770811946494)
+2020-08-31 10:43:56,074 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:227] - INFO: 开始进行过桥,桥长9.86959311009米 ,桥起始点: (121.4221156354597, 31.12770811946494)
+2020-08-31 10:43:59,584 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:300] - INFO: 遥控模式
+2020-08-31 11:23:23,723 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:305] - INFO: 遥控模式
+2020-08-31 11:23:27,783 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:210] - INFO: 延边模式
+2020-08-31 11:24:09,735 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:305] - INFO: 遥控模式
+2020-08-31 11:24:10,762 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:210] - INFO: 延边模式
+2020-08-31 11:24:10,771 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:270] - INFO: 到达第0个航点:(121.4221689, 31.127812)
+2020-08-31 11:24:57,773 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:270] - INFO: 到达第1个航点:(121.422388871116, 31.12688208630769)
+2020-08-31 11:25:07,276 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:270] - INFO: 到达第2个航点:(121.4223389404201, 31.12700068451231)
+2020-08-31 11:25:12,266 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:270] - INFO: 到达第3个航点:(121.4222644829651, 31.12710193240835)
+2020-08-31 11:25:17,791 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:270] - INFO: 到达第4个航点:(121.4222491551472, 31.12722165959074)
+2020-08-31 11:25:19,330 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:270] - INFO: 到达第5个航点:(121.4222179149175, 31.12724652435526)
+2020-08-31 11:25:24,243 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:270] - INFO: 到达第6个航点:(121.4222009693027, 31.1273494563578)
+2020-08-31 11:25:28,344 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:270] - INFO: 到达第7个航点:(121.4221535089392, 31.12743876307533)
+2020-08-31 11:25:35,776 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:229] - INFO: 开始进行过桥,桥长9.86959311009米 ,桥起始点: (121.422154282497, 31.1276258628408)
+2020-08-31 11:25:43,493 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:238] - INFO: 已通过桥,耗时4.94921112061秒,桥末尾点: (121.4221156354597, 31.12770811946494)
+2020-08-31 11:25:48,278 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:229] - INFO: 开始进行过桥,桥长9.86959311009米 ,桥起始点: (121.4221156354597, 31.12770811946494)
+2020-08-31 11:26:01,544 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:238] - INFO: 已通过桥,耗时5.00376319885秒,桥末尾点: (121.422154282497, 31.1276258628408)
+2020-08-31 11:26:07,339 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:229] - INFO: 开始进行过桥,桥长9.86959311009米 ,桥起始点: (121.422154282497, 31.1276258628408)
+2020-08-31 11:26:12,535 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:238] - INFO: 已通过桥,耗时4.98055100441秒,桥末尾点: (121.4221156354597, 31.12770811946494)
+2020-08-31 11:26:24,279 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:270] - INFO: 到达第8个航点:(121.4220954117286, 31.12760611626683)
+2020-08-31 11:26:25,820 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:270] - INFO: 到达第9个航点:(121.4221289425747, 31.12761506792394)
+2020-08-31 11:26:27,564 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:229] - INFO: 开始进行过桥,桥长9.86959311009米 ,桥起始点: (121.422154282497, 31.1276258628408)
+2020-08-31 11:26:32,766 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:238] - INFO: 已通过桥,耗时5.0001809597秒,桥末尾点: (121.4221156354597, 31.12770811946494)
+2020-08-31 11:26:32,769 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:270] - INFO: 到达第10个航点:(121.4220909906268, 31.12770523220532)
+2020-08-31 11:26:37,374 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:270] - INFO: 到达第11个航点:(121.4220394410247, 31.12771156906692)
+2020-08-31 11:26:37,475 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:270] - INFO: 到达第12个航点:(121.4220192127573, 31.12775930570387)
+2020-08-31 11:26:37,580 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:229] - INFO: 开始进行过桥,桥长9.86959311009米 ,桥起始点: (121.4221156354597, 31.12770811946494)
+2020-08-31 11:26:50,501 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:238] - INFO: 已通过桥,耗时4.97197294235秒,桥末尾点: (121.422154282497, 31.1276258628408)
+2020-08-31 11:26:55,296 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:229] - INFO: 开始进行过桥,桥长9.86959311009米 ,桥起始点: (121.422154282497, 31.1276258628408)
+2020-08-31 11:27:00,477 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:238] - INFO: 已通过桥,耗时4.9723842144秒,桥末尾点: (121.4221156354597, 31.12770811946494)
+2020-08-31 11:27:06,294 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:270] - INFO: 到达第13个航点:(121.4219797758715, 31.12780177604526)
+2020-08-31 11:27:08,735 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:275] - INFO: 到达第14个航点:(121.4219851410387, 31.12786032745621)
+2020-08-31 11:27:08,769 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:276] - INFO: 任务结束
+2020-08-31 11:27:11,762 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:305] - INFO: 遥控模式
+2020-08-31 11:39:11,819 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:306] - INFO: 遥控模式
+2020-08-31 11:39:14,910 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:210] - INFO: 延边模式
+2020-08-31 11:39:14,911 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:272] - INFO: 到达第0个航点:(121.422018, 31.1279278)
+2020-08-31 11:39:28,912 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:229] - INFO: 开始进行过桥,桥长9.86959311009米 ,桥起始点: (121.4221156354597, 31.12770811946494)
+2020-08-31 11:39:36,060 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:238] - INFO: 已通过桥,耗时4.9954559803秒,桥末尾点: (121.422154282497, 31.1276258628408)
+2020-08-31 11:40:10,328 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:272] - INFO: 到达第1个航点:(121.422388871116, 31.12688208630769)
+2020-08-31 11:40:22,907 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:272] - INFO: 到达第2个航点:(121.4223389404201, 31.12700068451231)
+2020-08-31 11:40:28,397 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:272] - INFO: 到达第3个航点:(121.4222644829651, 31.12710193240835)
+2020-08-31 11:40:35,422 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:272] - INFO: 到达第4个航点:(121.4222491551472, 31.12722165959074)
+2020-08-31 11:40:35,535 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:272] - INFO: 到达第5个航点:(121.4222179149175, 31.12724652435526)
+2020-08-31 11:40:39,930 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:272] - INFO: 到达第6个航点:(121.4222009693027, 31.1273494563578)
+2020-08-31 11:40:44,414 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:272] - INFO: 到达第7个航点:(121.4221535089392, 31.12743876307533)
+2020-08-31 11:40:51,348 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:229] - INFO: 开始进行过桥,桥长9.86959311009米 ,桥起始点: (121.422154282497, 31.1276258628408)
+2020-08-31 11:40:59,129 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:238] - INFO: 已通过桥,耗时5.00086283684秒,桥末尾点: (121.4221156354597, 31.12770811946494)
+2020-08-31 11:41:04,133 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:229] - INFO: 开始进行过桥,桥长9.86959311009米 ,桥起始点: (121.4221156354597, 31.12770811946494)
+2020-08-31 11:41:07,894 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:306] - INFO: 遥控模式
+2020-08-31 11:42:20,330 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:306] - INFO: 遥控模式
+2020-08-31 11:42:21,371 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:210] - INFO: 延边模式
+2020-08-31 11:42:21,382 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:272] - INFO: 到达第0个航点:(121.4220722, 31.1276252)
+2020-08-31 11:42:58,921 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:272] - INFO: 到达第1个航点:(121.422388871116, 31.12688208630769)
+2020-08-31 11:42:59,022 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:272] - INFO: 到达第2个航点:(121.4223389404201, 31.12700068451231)
+2020-08-31 11:42:59,126 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:272] - INFO: 到达第3个航点:(121.4222644829651, 31.12710193240835)
+2020-08-31 11:42:59,234 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:272] - INFO: 到达第4个航点:(121.4222491551472, 31.12722165959074)
+2020-08-31 11:42:59,350 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:272] - INFO: 到达第5个航点:(121.4222179149175, 31.12724652435526)
+2020-08-31 11:42:59,452 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:272] - INFO: 到达第6个航点:(121.4222009693027, 31.1273494563578)
+2020-08-31 11:42:59,556 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:272] - INFO: 到达第7个航点:(121.4221535089392, 31.12743876307533)
+2020-08-31 11:42:59,659 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:272] - INFO: 到达第8个航点:(121.4220954117286, 31.12760611626683)
+2020-08-31 11:42:59,773 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:272] - INFO: 到达第9个航点:(121.4221289425747, 31.12761506792394)
+2020-08-31 11:42:59,883 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:272] - INFO: 到达第10个航点:(121.4220909906268, 31.12770523220532)
+2020-08-31 11:42:59,984 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:272] - INFO: 到达第11个航点:(121.4220394410247, 31.12771156906692)
+2020-08-31 11:43:00,086 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:272] - INFO: 到达第12个航点:(121.4220192127573, 31.12775930570387)
+2020-08-31 11:43:00,187 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:272] - INFO: 到达第13个航点:(121.4219797758715, 31.12780177604526)
+2020-08-31 11:43:00,299 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:277] - INFO: 到达第14个航点:(121.4219851410387, 31.12786032745621)
+2020-08-31 11:43:00,308 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:278] - INFO: 任务结束
+2020-08-31 11:43:02,850 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:306] - INFO: 遥控模式
+2020-08-31 13:11:28,869 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:311] - INFO: 遥控模式
+2020-08-31 13:11:33,479 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:210] - INFO: 延边模式
+2020-08-31 13:11:33,480 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:273] - INFO: 到达第1个航点:(121.4222815, 31.1268618)
+2020-08-31 13:11:33,583 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:278] - INFO: 到达第2个航点:(121.4223389404201, 31.12700068451231)
+2020-08-31 13:11:46,400 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:278] - INFO: 到达第3个航点:(121.4222644829651, 31.12710193240835)
+2020-08-31 13:11:46,502 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:278] - INFO: 到达第4个航点:(121.4222491551472, 31.12722165959074)
+2020-08-31 13:11:46,603 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:278] - INFO: 到达第5个航点:(121.4222179149175, 31.12724652435526)
+2020-08-31 13:11:46,706 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:278] - INFO: 到达第6个航点:(121.4222009693027, 31.1273494563578)
+2020-08-31 13:11:46,811 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:278] - INFO: 到达第7个航点:(121.4221535089392, 31.12743876307533)
+2020-08-31 13:11:46,921 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:278] - INFO: 到达第8个航点:(121.4220954117286, 31.12760611626683)
+2020-08-31 13:11:47,033 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:278] - INFO: 到达第9个航点:(121.4221289425747, 31.12761506792394)
+2020-08-31 13:11:47,138 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:278] - INFO: 到达第10个航点:(121.4220909906268, 31.12770523220532)
+2020-08-31 13:11:47,243 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:278] - INFO: 到达第11个航点:(121.4220394410247, 31.12771156906692)
+2020-08-31 13:11:47,352 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:278] - INFO: 到达第12个航点:(121.4220192127573, 31.12775930570387)
+2020-08-31 13:11:47,466 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:278] - INFO: 到达第13个航点:(121.4219797758715, 31.12780177604526)
+2020-08-31 13:11:47,573 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:278] - INFO: 到达第14个航点:(121.4219851410387, 31.12786032745621)
+2020-08-31 13:13:05,393 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:312] - INFO: 遥控模式
+2020-08-31 13:13:07,454 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:210] - INFO: 延边模式
+2020-08-31 13:13:07,455 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:274] - INFO: 到达第1个航点:(121.4221863, 31.1271798)
+2020-08-31 13:13:07,564 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:279] - INFO: 到达第2个航点:(121.4223389404201, 31.12700068451231)
+2020-08-31 13:13:07,668 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:279] - INFO: 到达第3个航点:(121.4222644829651, 31.12710193240835)
+2020-08-31 13:13:07,774 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:279] - INFO: 到达第4个航点:(121.4222491551472, 31.12722165959074)
+2020-08-31 13:13:11,981 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:279] - INFO: 到达第5个航点:(121.4222179149175, 31.12724652435526)
+2020-08-31 13:13:12,083 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:279] - INFO: 到达第6个航点:(121.4222009693027, 31.1273494563578)
+2020-08-31 13:13:12,195 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:279] - INFO: 到达第7个航点:(121.4221535089392, 31.12743876307533)
+2020-08-31 13:13:12,296 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:279] - INFO: 到达第8个航点:(121.4220954117286, 31.12760611626683)
+2020-08-31 13:13:12,404 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:279] - INFO: 到达第9个航点:(121.4221289425747, 31.12761506792394)
+2020-08-31 13:13:12,507 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:279] - INFO: 到达第10个航点:(121.4220909906268, 31.12770523220532)
+2020-08-31 13:13:12,610 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:279] - INFO: 到达第11个航点:(121.4220394410247, 31.12771156906692)
+2020-08-31 13:13:12,719 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:279] - INFO: 到达第12个航点:(121.4220192127573, 31.12775930570387)
+2020-08-31 13:13:12,829 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:279] - INFO: 到达第13个航点:(121.4219797758715, 31.12780177604526)
+2020-08-31 13:13:12,944 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:279] - INFO: 到达第14个航点:(121.4219851410387, 31.12786032745621)
+2020-08-31 13:13:56,410 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:312] - INFO: 遥控模式
+2020-08-31 13:13:57,440 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:210] - INFO: 延边模式
+2020-08-31 13:13:57,441 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:274] - INFO: 到达第1个航点:(121.4221056, 31.1273267)
+2020-08-31 13:13:57,543 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:279] - INFO: 到达第2个航点:(121.4223389404201, 31.12700068451231)
+2020-08-31 13:13:57,644 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:279] - INFO: 到达第3个航点:(121.4222644829651, 31.12710193240835)
+2020-08-31 13:13:57,745 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:279] - INFO: 到达第4个航点:(121.4222491551472, 31.12722165959074)
+2020-08-31 13:13:57,846 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:279] - INFO: 到达第5个航点:(121.4222179149175, 31.12724652435526)
+2020-08-31 13:13:57,948 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:279] - INFO: 到达第6个航点:(121.4222009693027, 31.1273494563578)
+2020-08-31 13:13:59,477 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:312] - INFO: 遥控模式
+2020-08-31 13:20:30,442 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:314] - INFO: 遥控模式
+2020-08-31 13:20:30,962 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:210] - INFO: 延边模式
+2020-08-31 13:20:30,964 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:275] - INFO: 到达第1个航点:(121.422388871116, 31.12688208630769)
+2020-08-31 13:20:31,066 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:281] - INFO: 到达第2个航点:(121.4223389404201, 31.12700068451231)
+2020-08-31 13:20:31,167 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:281] - INFO: 到达第3个航点:(121.4222644829651, 31.12710193240835)
+2020-08-31 13:20:31,272 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:281] - INFO: 到达第4个航点:(121.4222491551472, 31.12722165959074)
+2020-08-31 13:20:31,373 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:281] - INFO: 到达第5个航点:(121.4222179149175, 31.12724652435526)
+2020-08-31 13:20:31,473 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:281] - INFO: 到达第6个航点:(121.4222009693027, 31.1273494563578)
+2020-08-31 13:20:31,574 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:281] - INFO: 到达第7个航点:(121.4221535089392, 31.12743876307533)
+2020-08-31 13:20:31,678 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:281] - INFO: 到达第8个航点:(121.4220954117286, 31.12760611626683)
+2020-08-31 13:20:34,012 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:314] - INFO: 遥控模式
+2020-08-31 13:21:47,935 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:314] - INFO: 遥控模式
+2020-08-31 13:21:50,972 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:210] - INFO: 延边模式
+2020-08-31 13:21:50,997 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:275] - INFO: 到达第1个航点:(121.422388871116, 31.12688208630769)
+2020-08-31 13:22:57,501 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:314] - INFO: 遥控模式
+2020-08-31 13:23:53,974 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:314] - INFO: 遥控模式
+2020-08-31 13:23:56,017 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:210] - INFO: 延边模式
+2020-08-31 13:23:56,020 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:275] - INFO: 前往第1个航点:(121.422388871116, 31.12688208630769)
+2020-08-31 13:24:08,539 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:275] - INFO: 前往第2个航点:(121.4223389404201, 31.12700068451231)
+2020-08-31 13:24:08,650 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:281] - INFO: 前往第3个航点:(121.4222644829651, 31.12710193240835)
+2020-08-31 13:24:08,751 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:281] - INFO: 前往第4个航点:(121.4222491551472, 31.12722165959074)
+2020-08-31 13:24:08,855 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:281] - INFO: 前往第5个航点:(121.4222179149175, 31.12724652435526)
+2020-08-31 13:24:08,978 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:281] - INFO: 前往第6个航点:(121.4222009693027, 31.1273494563578)
+2020-08-31 13:24:09,080 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:281] - INFO: 前往第7个航点:(121.4221535089392, 31.12743876307533)
+2020-08-31 13:24:09,183 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:281] - INFO: 前往第8个航点:(121.4220954117286, 31.12760611626683)
+2020-08-31 13:24:09,297 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:281] - INFO: 前往第9个航点:(121.4221289425747, 31.12761506792394)
+2020-08-31 13:24:09,407 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:281] - INFO: 前往第10个航点:(121.4220909906268, 31.12770523220532)
+2020-08-31 13:24:09,529 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:281] - INFO: 前往第11个航点:(121.4220394410247, 31.12771156906692)
+2020-08-31 13:24:09,639 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:281] - INFO: 前往第12个航点:(121.4220192127573, 31.12775930570387)
+2020-08-31 13:24:09,744 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:281] - INFO: 前往第13个航点:(121.4219797758715, 31.12780177604526)
+2020-08-31 13:24:09,846 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:281] - INFO: 前往第14个航点:(121.4219851410387, 31.12786032745621)
+2020-08-31 13:24:18,474 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:314] - INFO: 遥控模式
+2020-08-31 13:24:33,960 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:314] - INFO: 遥控模式
+2020-08-31 13:24:35,503 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:210] - INFO: 延边模式
+2020-08-31 13:24:35,505 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:275] - INFO: 前往第1个航点:(121.422388871116, 31.12688208630769)
+2020-08-31 13:24:55,541 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:275] - INFO: 前往第2个航点:(121.4223389404201, 31.12700068451231)
+2020-08-31 13:24:55,648 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:281] - INFO: 前往第3个航点:(121.4222644829651, 31.12710193240835)
+2020-08-31 13:24:55,753 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:281] - INFO: 前往第4个航点:(121.4222491551472, 31.12722165959074)
+2020-08-31 13:24:55,867 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:281] - INFO: 前往第5个航点:(121.4222179149175, 31.12724652435526)
+2020-08-31 13:24:55,974 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:281] - INFO: 前往第6个航点:(121.4222009693027, 31.1273494563578)
+2020-08-31 13:24:56,077 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:281] - INFO: 前往第7个航点:(121.4221535089392, 31.12743876307533)
+2020-08-31 13:24:56,178 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:281] - INFO: 前往第8个航点:(121.4220954117286, 31.12760611626683)
+2020-08-31 13:24:56,282 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:281] - INFO: 前往第9个航点:(121.4221289425747, 31.12761506792394)
+2020-08-31 13:24:56,384 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:281] - INFO: 前往第10个航点:(121.4220909906268, 31.12770523220532)
+2020-08-31 13:24:56,488 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:281] - INFO: 前往第11个航点:(121.4220394410247, 31.12771156906692)
+2020-08-31 13:24:56,590 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:281] - INFO: 前往第12个航点:(121.4220192127573, 31.12775930570387)
+2020-08-31 13:24:56,698 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:281] - INFO: 前往第13个航点:(121.4219797758715, 31.12780177604526)
+2020-08-31 13:24:56,810 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:281] - INFO: 前往第14个航点:(121.4219851410387, 31.12786032745621)
+2020-08-31 13:25:05,980 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:314] - INFO: 遥控模式
+2020-08-31 14:45:53,432 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:326] - INFO: 遥控模式
+2020-08-31 14:45:56,066 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:221] - INFO: 延边模式
+2020-08-31 14:47:05,428 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: 遥控模式
+2020-08-31 14:47:06,443 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:221] - INFO: 延边模式
+2020-08-31 14:48:22,923 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:326] - INFO: 遥控模式
+2020-08-31 14:48:24,958 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:221] - INFO: 延边模式
+2020-08-31 14:48:24,966 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:294] - INFO: 前往第1个航点:(121.422388871116, 31.12688208630769)
+2020-08-31 14:48:42,029 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:294] - INFO: 前往第2个航点:(121.4223389404201, 31.12700068451231)
+2020-08-31 14:48:53,526 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:294] - INFO: 前往第3个航点:(121.4222644829651, 31.12710193240835)
+2020-08-31 14:48:58,931 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:294] - INFO: 前往第4个航点:(121.4222491551472, 31.12722165959074)
+2020-08-31 14:49:04,575 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:294] - INFO: 前往第5个航点:(121.4222179149175, 31.12724652435526)
+2020-08-31 14:49:05,998 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:294] - INFO: 前往第6个航点:(121.4222009693027, 31.1273494563578)
+2020-08-31 14:49:10,488 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:294] - INFO: 前往第7个航点:(121.4221535089392, 31.12743876307533)
+2020-08-31 14:49:15,474 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:294] - INFO: 前往第8个航点:(121.4220954117286, 31.12760611626683)
+2020-08-31 14:49:21,999 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:279] - INFO: 开始进行过桥,桥长9.86959311009米 ,桥起始点: (121.422154282497, 31.1276258628408)
+2020-08-31 14:49:23,430 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:294] - INFO: 前往第9个航点:(121.4221289425747, 31.12761506792394)
+2020-08-31 14:49:23,545 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:294] - INFO: 前往第10个航点:(121.4220909906268, 31.12770523220532)
+2020-08-31 14:49:24,665 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:261] - INFO: 已通过桥,耗时0.100600004196秒,桥末尾点: (121.4221156354597, 31.12770811946494)
+2020-08-31 14:49:24,766 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:270] - INFO: 前往第11个航点:(121.4220394410247, 31.12771156906692)
+2020-08-31 14:49:24,873 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:270] - INFO: 前往第12个航点:(121.4220192127573, 31.12775930570387)
+2020-08-31 14:49:24,984 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:270] - INFO: 前往第13个航点:(121.4219797758715, 31.12780177604526)
+2020-08-31 14:49:25,091 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:270] - INFO: 前往第14个航点:(121.4219851410387, 31.12786032745621)
+2020-08-31 14:51:21,447 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:326] - INFO: 遥控模式
+2020-08-31 14:51:22,472 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:221] - INFO: 延边模式
+2020-08-31 14:51:22,474 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:294] - INFO: 前往第1个航点:(121.422388871116, 31.12688208630769)
+2020-08-31 14:52:07,494 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:294] - INFO: 前往第2个航点:(121.4223389404201, 31.12700068451231)
+2020-08-31 14:52:19,533 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:294] - INFO: 前往第3个航点:(121.4222644829651, 31.12710193240835)
+2020-08-31 14:52:24,992 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:294] - INFO: 前往第4个航点:(121.4222491551472, 31.12722165959074)
+2020-08-31 14:52:31,020 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:294] - INFO: 前往第5个航点:(121.4222179149175, 31.12724652435526)
+2020-08-31 14:52:32,041 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:294] - INFO: 前往第6个航点:(121.4222009693027, 31.1273494563578)
+2020-08-31 14:52:37,027 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:294] - INFO: 前往第7个航点:(121.4221535089392, 31.12743876307533)
+2020-08-31 14:52:41,552 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:294] - INFO: 前往第8个航点:(121.4220954117286, 31.12760611626683)
+2020-08-31 14:52:49,004 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:279] - INFO: 开始进行过桥,桥长9.86959311009米 ,桥起始点: (121.422154282497, 31.1276258628408)
+2020-08-31 14:52:51,551 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:261] - INFO: 已通过桥,耗时0.10085606575秒,桥末尾点: (121.4221156354597, 31.12770811946494)
+2020-08-31 14:52:51,669 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:270] - INFO: 前往第9个航点:(121.4221289425747, 31.12761506792394)
+2020-08-31 14:52:52,488 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:270] - INFO: 前往第10个航点:(121.4220909906268, 31.12770523220532)
+2020-08-31 14:52:52,607 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:270] - INFO: 前往第11个航点:(121.4220394410247, 31.12771156906692)
+2020-08-31 14:52:52,709 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:270] - INFO: 前往第12个航点:(121.4220192127573, 31.12775930570387)
+2020-08-31 14:52:52,824 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:270] - INFO: 前往第13个航点:(121.4219797758715, 31.12780177604526)
+2020-08-31 14:52:52,933 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:270] - INFO: 前往第14个航点:(121.4219851410387, 31.12786032745621)
+2020-08-31 14:55:50,987 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:326] - INFO: 遥控模式
+2020-08-31 14:55:51,489 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:221] - INFO: 延边模式
+2020-08-31 14:55:51,491 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:294] - INFO: 前往第1个航点:(121.422388871116, 31.12688208630769)
+2020-08-31 14:55:52,506 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:326] - INFO: 遥控模式
+2020-08-31 14:55:53,011 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:221] - INFO: 延边模式
+2020-08-31 14:55:59,013 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:279] - INFO: 开始进行过桥,桥长9.86959311009米 ,桥起始点: (121.4221156354597, 31.12770811946494)
+2020-08-31 14:59:52,009 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: 遥控模式
+2020-08-31 14:59:54,548 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:221] - INFO: 延边模式
+2020-08-31 14:59:54,550 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:260] - INFO: 前往第1个航点:(121.422388871116, 31.12688208630769)
+2020-08-31 15:00:43,050 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:260] - INFO: 前往第2个航点:(121.4223389404201, 31.12700068451231)
+2020-08-31 15:00:54,535 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:260] - INFO: 前往第3个航点:(121.4222644829651, 31.12710193240835)
+2020-08-31 15:01:00,116 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:260] - INFO: 前往第4个航点:(121.4222491551472, 31.12722165959074)
+2020-08-31 15:01:05,529 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:260] - INFO: 前往第5个航点:(121.4222179149175, 31.12724652435526)
+2020-08-31 15:01:07,056 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:260] - INFO: 前往第6个航点:(121.4222009693027, 31.1273494563578)
+2020-08-31 15:01:11,556 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:260] - INFO: 前往第7个航点:(121.4221535089392, 31.12743876307533)
+2020-08-31 15:01:16,126 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:260] - INFO: 前往第8个航点:(121.4220954117286, 31.12760611626683)
+2020-08-31 15:01:23,596 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:249] - INFO: 开始进行过桥,桥长9.86959311009米 ,桥起始点: (121.422154282497, 31.1276258628408)
+2020-08-31 15:01:57,070 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: 遥控模式
+2020-08-31 15:03:42,028 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: 遥控模式
+2020-08-31 15:03:43,581 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:221] - INFO: 延边模式
+2020-08-31 15:03:43,581 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第1个航点:(121.422388871116, 31.12688208630769)
+2020-08-31 15:04:22,134 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第2个航点:(121.4223389404201, 31.12700068451231)
+2020-08-31 15:04:32,047 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第3个航点:(121.4222644829651, 31.12710193240835)
+2020-08-31 15:04:37,091 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第4个航点:(121.4222491551472, 31.12722165959074)
+2020-08-31 15:04:42,604 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第5个航点:(121.4222179149175, 31.12724652435526)
+2020-08-31 15:04:44,052 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第6个航点:(121.4222009693027, 31.1273494563578)
+2020-08-31 15:04:49,111 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第7个航点:(121.4221535089392, 31.12743876307533)
+2020-08-31 15:04:53,031 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第8个航点:(121.4220954117286, 31.12760611626683)
+2020-08-31 15:05:00,532 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:248] - INFO: 开始进行过桥,桥长9.86959311009米 ,桥起始点: (121.422154282497, 31.1276258628408)
+2020-08-31 15:05:03,177 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:283] - INFO: 已通过桥,耗时0.102853059769秒,桥末尾点: (121.4221156354597, 31.12770811946494)
+2020-08-31 15:05:03,290 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:292] - INFO: 前往第9个航点:(121.4221289425747, 31.12761506792394)
+2020-08-31 15:05:04,608 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:292] - INFO: 前往第10个航点:(121.4220909906268, 31.12770523220532)
+2020-08-31 15:05:04,710 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:292] - INFO: 前往第11个航点:(121.4220394410247, 31.12771156906692)
+2020-08-31 15:05:04,811 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:292] - INFO: 前往第12个航点:(121.4220192127573, 31.12775930570387)
+2020-08-31 15:05:04,913 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:292] - INFO: 前往第13个航点:(121.4219797758715, 31.12780177604526)
+2020-08-31 15:05:05,015 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:292] - INFO: 前往第14个航点:(121.4219851410387, 31.12786032745621)
+2020-08-31 15:08:40,550 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: 遥控模式
+2020-08-31 15:08:43,094 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:221] - INFO: 延边模式
+2020-08-31 15:08:43,109 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第1个航点:(121.422388871116, 31.12688208630769)
+2020-08-31 15:08:49,647 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:248] - INFO: 开始进行过桥,桥长9.86959311009米 ,桥起始点: (121.4221156354597, 31.12770811946494)
+2020-08-31 15:08:56,669 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:283] - INFO: 已通过桥,耗时0.100358009338秒,桥末尾点: (121.422154282497, 31.1276258628408)
+2020-08-31 15:08:56,773 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:292] - INFO: 前往第2个航点:(121.4223389404201, 31.12700068451231)
+2020-08-31 15:08:56,874 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:292] - INFO: 前往第3个航点:(121.4222644829651, 31.12710193240835)
+2020-08-31 15:08:56,975 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:292] - INFO: 前往第4个航点:(121.4222491551472, 31.12722165959074)
+2020-08-31 15:08:57,076 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:292] - INFO: 前往第5个航点:(121.4222179149175, 31.12724652435526)
+2020-08-31 15:08:57,177 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:292] - INFO: 前往第6个航点:(121.4222009693027, 31.1273494563578)
+2020-08-31 15:08:57,278 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:292] - INFO: 前往第7个航点:(121.4221535089392, 31.12743876307533)
+2020-08-31 15:08:57,385 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:292] - INFO: 前往第8个航点:(121.4220954117286, 31.12760611626683)
+2020-08-31 15:08:57,504 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:292] - INFO: 前往第9个航点:(121.4221289425747, 31.12761506792394)
+2020-08-31 15:08:57,628 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:292] - INFO: 前往第10个航点:(121.4220909906268, 31.12770523220532)
+2020-08-31 15:08:57,730 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:292] - INFO: 前往第11个航点:(121.4220394410247, 31.12771156906692)
+2020-08-31 15:08:57,835 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:292] - INFO: 前往第12个航点:(121.4220192127573, 31.12775930570387)
+2020-08-31 15:08:57,940 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:292] - INFO: 前往第13个航点:(121.4219797758715, 31.12780177604526)
+2020-08-31 15:09:14,123 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: 遥控模式
+2020-08-31 15:09:28,070 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第1个航点:(121.422388871116, 31.12688208630769)
+2020-08-31 15:10:03,611 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第2个航点:(121.4223389404201, 31.12700068451231)
+2020-08-31 15:10:15,095 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第3个航点:(121.4222644829651, 31.12710193240835)
+2020-08-31 15:10:20,084 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第4个航点:(121.4222491551472, 31.12722165959074)
+2020-08-31 15:10:25,656 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第5个航点:(121.4222179149175, 31.12724652435526)
+2020-08-31 15:10:27,105 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第6个航点:(121.4222009693027, 31.1273494563578)
+2020-08-31 15:10:32,090 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第7个航点:(121.4221535089392, 31.12743876307533)
+2020-08-31 15:10:36,574 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第8个航点:(121.4220954117286, 31.12760611626683)
+2020-08-31 15:10:43,601 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:248] - INFO: 开始进行过桥,桥长9.86959311009米 ,桥起始点: (121.422154282497, 31.1276258628408)
+2020-08-31 15:10:46,168 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:283] - INFO: 已通过桥,耗时0.100463151932秒,桥末尾点: (121.4221156354597, 31.12770811946494)
+2020-08-31 15:10:46,276 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:292] - INFO: 前往第9个航点:(121.4221289425747, 31.12761506792394)
+2020-08-31 15:10:46,387 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:292] - INFO: 前往第10个航点:(121.4220909906268, 31.12770523220532)
+2020-08-31 15:10:46,489 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:292] - INFO: 前往第11个航点:(121.4220394410247, 31.12771156906692)
+2020-08-31 15:10:46,593 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:292] - INFO: 前往第12个航点:(121.4220192127573, 31.12775930570387)
+2020-08-31 15:10:46,695 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:292] - INFO: 前往第13个航点:(121.4219797758715, 31.12780177604526)
+2020-08-31 15:10:56,576 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: 遥控模式
+2020-08-31 15:17:23,883 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第1个航点:(121.422388871116, 31.12688208630769)
+2020-08-31 15:18:52,282 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第1个航点:(121.422388871116, 31.12688208630769)
+2020-08-31 15:19:09,725 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:248] - INFO: 开始进行过桥,桥长9.86959311009米 ,桥起始点: (121.4221156354597, 31.12770811946494)
+2020-08-31 15:21:00,427 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:283] - INFO: 已通过桥,耗时2.44507789612秒,桥末尾点: (121.422154282497, 31.1276258628408)
+2020-08-31 15:21:43,642 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第1个航点:(121.422388871116, 31.12688208630769)
+2020-08-31 15:22:14,701 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第2个航点:(121.4223389404201, 31.12700068451231)
+2020-08-31 15:22:26,652 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第3个航点:(121.4222644829651, 31.12710193240835)
+2020-08-31 15:22:31,709 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第4个航点:(121.4222491551472, 31.12722165959074)
+2020-08-31 15:22:37,668 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第5个航点:(121.4222179149175, 31.12724652435526)
+2020-08-31 15:22:38,669 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第6个航点:(121.4222009693027, 31.1273494563578)
+2020-08-31 15:22:43,721 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第7个航点:(121.4221535089392, 31.12743876307533)
+2020-08-31 15:22:48,205 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第8个航点:(121.4220954117286, 31.12760611626683)
+2020-08-31 15:22:55,669 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:248] - INFO: 开始进行过桥,桥长9.86959311009米 ,桥起始点: (121.422154282497, 31.1276258628408)
+2020-08-31 15:23:30,684 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第1个航点:(121.422388871116, 31.12688208630769)
+2020-08-31 15:24:08,244 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第2个航点:(121.4223389404201, 31.12700068451231)
+2020-08-31 15:24:18,195 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第3个航点:(121.4222644829651, 31.12710193240835)
+2020-08-31 15:24:23,154 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第4个航点:(121.4222491551472, 31.12722165959074)
+2020-08-31 15:24:28,711 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第5个航点:(121.4222179149175, 31.12724652435526)
+2020-08-31 15:24:30,212 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第6个航点:(121.4222009693027, 31.1273494563578)
+2020-08-31 15:24:35,147 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第7个航点:(121.4221535089392, 31.12743876307533)
+2020-08-31 15:24:39,671 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第8个航点:(121.4220954117286, 31.12760611626683)
+2020-08-31 15:24:47,245 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:248] - INFO: 开始进行过桥,桥长9.86959311009米 ,桥起始点: (121.422154282497, 31.1276258628408)
+2020-08-31 15:24:49,771 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:283] - INFO: 已通过桥,耗时0.10263299942秒,桥末尾点: (121.4221156354597, 31.12770811946494)
+2020-08-31 15:26:10,663 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第1个航点:(121.422388871116, 31.12688208630769)
+2020-08-31 15:26:21,828 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: 遥控模式
+2020-08-31 15:26:51,721 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:221] - INFO: 延边模式
+2020-08-31 15:26:51,723 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:247] - INFO: 开始进行过桥,桥长9.86959311009米 ,桥起始点: (121.422154282497, 31.1276258628408)
+2020-08-31 15:26:56,716 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:283] - INFO: 已通过桥,耗时4.99155187607秒,桥末尾点: (121.4221156354597, 31.12770811946494)
+2020-08-31 15:27:21,669 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第1个航点:(121.422388871116, 31.12688208630769)
+2020-08-31 15:28:13,209 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第2个航点:(121.4223389404201, 31.12700068451231)
+2020-08-31 15:28:25,185 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第3个航点:(121.4222644829651, 31.12710193240835)
+2020-08-31 15:28:30,782 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第4个航点:(121.4222491551472, 31.12722165959074)
+2020-08-31 15:28:36,197 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第5个航点:(121.4222179149175, 31.12724652435526)
+2020-08-31 15:28:37,732 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第6个航点:(121.4222009693027, 31.1273494563578)
+2020-08-31 15:28:42,205 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第7个航点:(121.4221535089392, 31.12743876307533)
+2020-08-31 15:28:46,717 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:259] - INFO: 前往第8个航点:(121.4220954117286, 31.12760611626683)
+2020-08-31 15:28:53,735 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:247] - INFO: 开始进行过桥,桥长9.86959311009米 ,桥起始点: (121.422154282497, 31.1276258628408)
+2020-08-31 15:29:01,261 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:283] - INFO: 已通过桥,耗时4.99050092697秒,桥末尾点: (121.4221156354597, 31.12770811946494)
+2020-08-31 15:29:27,223 - /home/ubuntu/Navi/hum_running_2/hum_running_4.py[line:327] - INFO: 遥控模式

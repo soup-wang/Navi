@@ -1,0 +1,40 @@
+# 延边程序配置文件
+
+except_dist: 4  # 期望与岸的距离为 0.7
+
+# 设置转向 pid设置，调试时应先调整转向pid 保证能很好地转到某个yaw值
+yaw_PID_debug: True # 是否调试yawPID
+yaw_PID_yaw: 300 # 调试Yaw PID时应固定一个yaw看是否能 很好地转到需要方向
+course_range: 30 # 设置航向范围，在原始航点最大偏转30度
+yaw_P: 15.0
+yaw_I: 0.0
+yaw_D: 0.0
+
+# 设置距离 pid设置，
+dist_P: 30.0
+dist_I: 0.0
+dist_D: 0.0
+
+#多少值参与均值滤波 越大表示反应越缓慢
+filter_N: 10
+
+# 是否画出岸与船的关系
+plot_debug: True
+
+# 是否写出日志
+log_debug: False
+
+# 是否打印日志
+print_log_debug: False
+
+# kml 文件名 需要 将文件放在同huming目录下
+kml_name:  anxian.kml
+
+# 最小航点距离，当船距离航点距离最小距离时，认为已经到达航点,单位m
+min_waypoint_distance: 5
+
+# 执行过桥最近距离
+min_bridge_distance: 10
+
+# 地面速度
+ground_speed: 2.0
