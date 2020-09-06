@@ -5,7 +5,8 @@ from mavros_msgs.msg import State, OverrideRCIn, RCIn, RCOut, VFR_HUD, HomePosit
 from mavros_msgs.srv import CommandBool,  SetMode
 from sensor_msgs.msg import Imu, NavSatFix, PointCloud2
 from visualization_msgs.msg import *
-
+from nav_msgs.msg import Path
+from geometry_msgs.msg import PoseStamped
 # 引入点云信息
 import sensor_msgs.point_cloud2 as pc2
 
@@ -79,6 +80,7 @@ class Px4Controller:
         # 读取kml 文件
         self.kml_dict = {}
         self.read_kml_file(kml_path)
+     
 
         self.dg = DiscreteGridUtils.DiscreteGridUtils()
 
@@ -125,14 +127,25 @@ class Px4Controller:
         self.point_cloud = None
 
         # 设置直线斜率
-        self.line = None
-        self.paths = None
 
         self.cloud_points = []
 
         self.num = 1
 
+        '''
+        ros publishers
+        '''
+        # rc重载发布
+        self.rc_override_pub = rospy.Publisher(
+            'mavros/rc/override', OverrideRCIn, queue_size=10)
+        self.marker_pub = rospy.Publisher("/track/heading", Marker, queue_size=10)
+        # 路径发布
+        self.path_pub = {}
+        for key in self.kml_dict:
+            # 发布航线
+            self.path_pub[key] = rospy.Publisher("/track/"+key, Path, queue_size=10)
 
+        self.shore_line_pub = rospy.Publisher("/track/Shoreline" , Path, queue_size=10)
         '''
         ros subscribers
         '''
@@ -157,13 +170,7 @@ class Px4Controller:
         rospy.Subscriber("/mavros/home_position/home",
                          HomePosition, self.home_GPS_callback)
 
-        '''
-        ros publishers
-        '''
-        # rc重载发布
-        self.rc_override_pub = rospy.Publisher(
-            'mavros/rc/override', OverrideRCIn, queue_size=10)
-        self.marker_pub = rospy.Publisher("/track/heading", Marker, queue_size=10)
+       
         '''
         ros services
         '''
@@ -173,18 +180,15 @@ class Px4Controller:
 
         print("Px4 Controller Initialized!")
 
-    
-
 
     def start(self, debug=False):
         rcmsg = OverrideRCIn()
         rcmsg.channels = [65535, 65535, 65535,
                           65535, 65535, 65535, 65535, 65535]
-        # 是否启用画图
-        if self.plot_debug:
-            Thread(target=self.plot, args=()).start()
-        first_cortron = True
-        i = 0
+        # 设置程序状态，0 为未设置，1为遥控，2 为延边状态
+        first_cortron_state = 0
+        # 航点索引
+        waypoint_index = 0
         bridge_time = 0
         # 0 向桥首个航点驶入
         # 1 进入直行状态
@@ -197,11 +201,11 @@ class Px4Controller:
             if self.arm_state and self.manual_state and (rospy.is_shutdown() is False):
                 rcmsg.channels[2] = 1700
                 if self.current_gps != None and len(self.rc_in) > 2 and self.rc_in[5] > 1500:
-                    if first_cortron == False:
+                    if first_cortron_state != 2:
                         self.log.logger.info("延边模式")
                         # 首次切入延边状态进入前往地一个航点
-                        first_cortron = True
-                        i = 0
+                        first_cortron_state = 2
+                        waypoint_index = 0
                         waypoint = self.current_gps
 
                     # 判断当前位置与航点距离多少
@@ -222,23 +226,22 @@ class Px4Controller:
                             self.log.logger.info(
                                 "开始进行过桥,桥长" + str(bridge_distance) + "米 ,桥起始点: "+str(min_bridge_waypoints[0]))
                             # 满足过桥行动
-                            start_bridge = True
                             bridge_time = 0
                             bridge_status = 0
 
                         elif self.current_waypoint_dist < self.min_waypoint_distance:
 
-                            if i < len(self.kml_dict["left00"]):
-                                waypoint = self.kml_dict["left00"][i]
-                                i += 1
+                            if waypoint_index < len(self.kml_dict["left00"]):
+                                waypoint = self.kml_dict["left00"][waypoint_index]
+                                waypoint_index += 1
                                 self.log.logger.info(
-                                    "前往第"+str(i)+"个航点:"+str(waypoint))
+                                    "前往第"+str(waypoint_index)+"个航点:"+str(waypoint))
 
-                            elif i == len(self.kml_dict["left00"]):
+                            elif waypoint_index == len(self.kml_dict["left00"]):
                                 self.log.logger.info(
-                                    "到达第"+str(i)+"个航点:"+str(waypoint))
+                                    "到达第"+str(waypoint_index)+"个航点:"+str(waypoint))
                                 self.log.logger.info("任务结束")
-                                i += 1
+                                waypoint_index += 1
 
                     # 若当前位置距离桥第一个点小于最小航点距离则进行
                     elif bridge_status == 0:
@@ -264,11 +267,11 @@ class Px4Controller:
                             bridge_status = 2
 
                     elif bridge_status == 2:
-                        if i < len(self.kml_dict["left00"])-1 and angle_utils.angle_different_0_360(self.current_heading, self.yaw) > 90:
-                            waypoint = self.kml_dict["left00"][i]
+                        if waypoint_index < len(self.kml_dict["left00"])-1 and angle_utils.angle_different_0_360(self.current_heading, self.yaw) > 90:
+                            waypoint = self.kml_dict["left00"][waypoint_index]
                             self.log.logger.info(
                                 "跳过第"+str(i)+"个航点:"+str(waypoint))
-                            i += 1
+                            waypoint_index += 1
                         else:
                             self.log.logger.info(
                                 "前往第"+str(i)+"个航点:"+str(waypoint))
@@ -280,11 +283,6 @@ class Px4Controller:
                     if len(self.cloud_points) > 5 and not self.yaw_PID_debug and bridge_status == 3:
                         self.get_dist_parallel_yaw()
                         if self.left_dist != None and self.left_parallel_yaw != None:
-                            self.log.logger.info(
-                                "left_dist: " + str(self.left_dist))
-                            self.log.logger.info(
-                                "left_parallel_yaw: "+str(self.left_parallel_yaw))
-
                             # 根据与岸的距离不断调整 yaw 是其不断逼近想要的距离
                             self.set_dist_pid_control(
                                 self.except_dist, self.left_dist, self.left_parallel_yaw, rcmsg)
@@ -295,9 +293,9 @@ class Px4Controller:
                 # 如果切换到遥控模式
                 elif len(self.rc_in) > 2 and self.rc_in[5] < 1500:
 
-                    if first_cortron:
+                    if first_cortron_state != 1:
                         self.log.logger.info("遥控模式")
-                        first_cortron = False
+                        first_cortron_state = 1
 
                     rcmsg.channels[2] = 65535
                     rcmsg.channels[0] = self.rc_in[1]
@@ -436,34 +434,6 @@ class Px4Controller:
         else:
             return None
 
-    def plot(self):
-        while self.plot_debug:
-
-            if self.line != None:
-
-                slope = -1/math.tan(self.line.theta)
-                paths = self.paths
-                intercept = self.line.intercept
-
-                plt.cla()
-                plt.axis([-15, 0, -3, 7])
-                # 画出直线
-                a = [-10, 0]
-                b = [slope*a[0]+intercept, slope*a[1]+intercept]
-
-                plt.plot(a, b, "g-", linewidth=2.0)
-
-                paths.append((0, 0))
-                c = []
-                d = []
-                for item in paths:
-                    c.append(item[0])
-                    d.append(item[1])
-                # plt.scatter(c, d, alpha=0.5, marker=",")
-                plt.scatter(c, d, alpha=0.5, marker=",")
-
-                plt.pause(1)
-
     def set_dist_pid_control(self, except_dist, now_dist, parallel_yaw, rcmsg):
         '''
         根据期望离岸距离 不断调整yaw 到达期望距离
@@ -558,6 +528,8 @@ class Px4Controller:
         '''
         self.home_gps = (msg.geo.longitude, msg.geo.latitude)
 
+      
+
     def get_dist_parallel_yaw(self):
         # 第一象限数
         quadrant_1 = set()
@@ -619,27 +591,49 @@ class Px4Controller:
         self.all_points = all_points
         cen = CenterPointEdge.CenterPointEdge(
             self.pointsClassification, center_point, 2)
-        self.paths = cen.contour()
-        if len(self.paths) > 5:
-            self.line = LineSegment.segment_Trig(
-                self.paths, center_point=center_point)
+        paths = cen.contour()
+        if len(paths) > 5:
+            line = LineSegment.segment_Trig(
+                paths, center_point=center_point)
             # 当线段拟合程度不够时使用双折线拟合
-            if self.line.err > 0.01:
+            if line.err > 0.01:
                 lines, good_i = LineSegment.segment_Trig_2(
-                    self.paths, center_point=center_point)
+                    paths, center_point=center_point)
                 # 双折线中选择k 值为负值且拟合程度大于0.75的线
                 # 次选拟合程度最大的
-                if good_i > len(self.paths)-good_i and lines[0] != None:
-                    self.line = lines[0]
+                if good_i > len(paths)-good_i and lines[0] != None:
+                    line = lines[0]
                 elif lines[1] != None:
-                    self.line = lines[1]
+                    line = lines[1]
         self.num += 1
-        self.paths.append((0, self.num))
+        paths.append((0, self.num))
         # 均值滤波
         self.left_dist = self.avg_filter(
-            self.left_dist_queue, self.line.dist, self.filter_N)
+            self.left_dist_queue, line.dist, self.filter_N)
         # 岸线的平行的角度
-        deflection = self.line.theta*180/math.pi
+        
+        min_x = float("inf")
+        min_y = float("inf")
+        max_x = -float("inf")
+        max_y = -float("inf")
+        for point in paths:
+            if point[0] > max_x:
+                max_x = point[0]
+            if point[0] < min_x:
+                min_x = point[0]
+            if point[1] > max_y:
+                max_y = point[1]
+            if point[1] < min_y:
+                min_y = point[1]
+        if line.theta != 0:
+            slope = -1/math.tan(line.theta)
+            path_list =[(min_x,min_x*slope+line.intercept),(max_x,max_x*slope+line.intercept)]
+        else :
+            path_list = [(-line.dist,min_y),(-line.dist,max_y)]
+        path = self.create_path(path_list,frame_id="world")
+        self.shore_line_pub.publish(path)
+               
+        deflection =  line.theta*180/math.pi
         left_parallel_yaw = (self.yaw - deflection) % 360
         # 均值滤波
         self.left_parallel_yaw = self.avg_filter(
@@ -659,53 +653,88 @@ class Px4Controller:
         self.yaw = (-heading / math.pi * 180.0 + 90) % 360
         marker = self.create_marker() 
         self.marker_pub.publish(marker)
+          # 将航线发布出来
+        if self.home_gps != None:
+            for key in self.kml_dict:
+                path = self.create_path(self.kml_dict[key])
+                self.path_pub[key].publish(path)
+
+    def  create_path(self,path_list,frame_id = "map"):
+        '''
+        创建path 
+        '''
+        path = Path()
+        path.header.frame_id= frame_id
+        path.header.stamp =  rospy.Time.now()
+        for point in path_list:
+            # 将gps 转为m 的点
+            if frame_id == "map":
+                point = gps_utiles.gps_to_meter_coord(point,self.home_gps)
+            pose = self.create_pose(point,frame_id)
+            path.poses.append(pose)
+        
+        return path
+            
+    
+    def create_pose (self,point,frame_id = "map"):
+        pose = PoseStamped()
+        pose.header.frame_id = frame_id
+        pose.header.stamp =  rospy.Time.now()
+        pose.pose.position.x = point[0]
+        pose.pose.position.y = point[1]
+        pose.pose.position.z = 0.0
+        pose.pose.orientation.x = 0.0
+        pose.pose.orientation.y = 0.0
+        pose.pose.orientation.z = 0.0
+        pose.pose.orientation.w = 1.0
+        return pose
 
     def create_marker(self):
-            '''
-            创建，marker
-            '''
-            marker = Marker()
+        '''
+        创建，marker
+        '''
+        marker = Marker()
 
-            #指定Marker的参考框架
-            marker.header.frame_id = "base_link"
-            
-            #时间戳
-            marker.header.stamp = rospy.Time.now()
-            
-            #ns代表namespace，命名空间可以避免重复名字引起的错误
-            marker.ns = "boat_yaw"
-            
-            #Marker的id号
-            marker.id = 0
-            
-            #Marker的类型，有ARROW，CUBE等
-            marker.type = Marker.ARROW
-            
-            #Marker的尺寸，单位是m
-            marker.scale.x = -0.5
-            marker.scale.y = 0.1
-            marker.scale.z = 0.1
-            
-            #Marker的动作类型设置箭头
-            marker.action = Marker.ADD
-            
-            #Marker的位置姿态
-            marker.pose.position.x = 0.0
-            marker.pose.position.y = 0.0
-            marker.pose.position.z = 0.0
-            marker.pose.orientation.x = 0.0
-            marker.pose.orientation.y = 0.0
-            marker.pose.orientation.z = 0.0
-            marker.pose.orientation.w = 1.0
-            
-            #Marker的颜色和透明度
-            marker.color.r = 0.8
-            marker.color.g = 0.0
-            marker.color.b = 0.0
-            marker.color.a = 0.9
-            
-            #Marker被自动销毁之前的存活时间，rospy.Duration()意味着在程序结束之前一直存在
-            return marker
+        #指定Marker的参考框架
+        marker.header.frame_id = "base_link"
+        
+        #时间戳
+        marker.header.stamp = rospy.Time.now()
+        
+        #ns代表namespace，命名空间可以避免重复名字引起的错误
+        marker.ns = "boat_yaw"
+        
+        #Marker的id号
+        marker.id = 0
+        
+        #Marker的类型，有ARROW，CUBE等
+        marker.type = Marker.ARROW
+        
+        #Marker的尺寸，单位是m
+        marker.scale.x = -0.5
+        marker.scale.y = 0.1
+        marker.scale.z = 0.1
+        
+        #Marker的动作类型设置箭头
+        marker.action = Marker.ADD
+        
+        #Marker的位置姿态
+        marker.pose.position.x = 0.0
+        marker.pose.position.y = 0.0
+        marker.pose.position.z = 0.0
+        marker.pose.orientation.x = 0.0
+        marker.pose.orientation.y = 0.0
+        marker.pose.orientation.z = 0.0
+        marker.pose.orientation.w = 1.0
+        
+        #Marker的颜色和透明度
+        marker.color.r = 0.8
+        marker.color.g = 0.0
+        marker.color.b = 0.0
+        marker.color.a = 0.9
+        
+        #Marker被自动销毁之前的存活时间，rospy.Duration()意味着在程序结束之前一直存在
+        return marker
 
     # rc输入的回调函数
 
