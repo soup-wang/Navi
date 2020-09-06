@@ -248,11 +248,11 @@ def segment_Trig(data,center_point=(0,0),debug=False):
     # 求误差方差
     err = np.var(error(Para[0],Xi,Yi))
 
-    intercept = dist/math.sin(theta)
     if theta != 0 :
+        intercept = dist/math.sin(theta)
         dist = point_line_dist(center_point,-1/math.tan(theta),intercept)
-    # 直线截距
-    
+    else :
+        intercept = float("inf")
     # print("error",error(Para[0],Xi,Yi))
     if debug:
         print("theta=",theta*180/math.pi,'\n',"dist=",dist)

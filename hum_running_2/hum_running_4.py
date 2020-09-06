@@ -7,6 +7,8 @@ from sensor_msgs.msg import Imu, NavSatFix, PointCloud2
 from visualization_msgs.msg import *
 from nav_msgs.msg import Path
 from geometry_msgs.msg import PoseStamped
+
+from hum_running_msgs.msg import HumRunning,Config
 # 引入点云信息
 import sensor_msgs.point_cloud2 as pc2
 
@@ -57,7 +59,7 @@ class Px4Controller:
 
     def __init__(self):
         rospy.init_node("test")
-
+        self.config = Config()
         current_path = os.path.abspath(
             os.path.dirname(__file__))
 
@@ -73,7 +75,7 @@ class Px4Controller:
         self.log = Logger(log_path, level='debug', backCount=15)
 
         # kml的路径
-        kml_path = current_path + "/" + self.kml_name
+        kml_path = current_path + "/" + self.config.kml_name
 
         print(kml_path)
 
@@ -85,7 +87,7 @@ class Px4Controller:
         self.dg = DiscreteGridUtils.DiscreteGridUtils()
 
         # 启动一个线程定时更新配置文件
-        # Thread(target=self.read_config, args=(config_path,)).start()
+        Thread(target=self.read_config, args=(config_path,)).start()
         # imu状态
         self.imu = None
         # rc输入的状态
@@ -131,6 +133,8 @@ class Px4Controller:
         self.cloud_points = []
 
         self.num = 1
+        # 存放gps 历史路径
+        self.gps_queue = Queue()
 
         '''
         ros publishers
@@ -146,6 +150,8 @@ class Px4Controller:
             self.path_pub[key] = rospy.Publisher("/track/"+key, Path, queue_size=10)
 
         self.shore_line_pub = rospy.Publisher("/track/Shoreline" , Path, queue_size=10)
+        self.gps_path_pub = rospy.Publisher("/track/gps_path" , Path, queue_size=10)
+        self.hum_msg_pub = rospy.Publisher("/track/hum_msg" , HumRunning, queue_size=10)
         '''
         ros subscribers
         '''
@@ -194,6 +200,9 @@ class Px4Controller:
         # 1 进入直行状态
         # 2 过桥完成,前往过桥后与当前航向不超过70度的航点
         bridge_status = 3
+        hum_msg = HumRunning()
+        
+
         while True:
             # 切入解锁
             # self.log.logger.info("arm_state:" + str(self.arm_state))
@@ -229,7 +238,7 @@ class Px4Controller:
                             bridge_time = 0
                             bridge_status = 0
 
-                        elif self.current_waypoint_dist < self.min_waypoint_distance:
+                        elif self.current_waypoint_dist < self.config.min_waypoint_distance:
 
                             if waypoint_index < len(self.kml_dict["left00"]):
                                 waypoint = self.kml_dict["left00"][waypoint_index]
@@ -252,7 +261,7 @@ class Px4Controller:
 
                         self.set_yaw_pid_control(
                             current_bridge_heading, rcmsg)
-                        if current_bridge_distance < self.min_waypoint_distance:
+                        if current_bridge_distance < self.config.min_waypoint_distance:
                             bridge_status = 1
                             start_time = time.time()
 
@@ -260,7 +269,7 @@ class Px4Controller:
 
                         self.set_yaw_pid_control(bridge_heading, rcmsg)
                         bridge_time = time.time()-start_time
-                        if bridge_time > bridge_distance / self.ground_speed:
+                        if bridge_time > (bridge_distance +5) / self.config.ground_speed:
                             self.log.logger.info(
                                 "已通过桥,耗时"+str(bridge_time)+"秒,桥末尾点: "+str(min_bridge_waypoints[-1]))
                             # 确定通过桥梁
@@ -270,22 +279,26 @@ class Px4Controller:
                         if waypoint_index < len(self.kml_dict["left00"])-1 and angle_utils.angle_different_0_360(self.current_heading, self.yaw) > 90:
                             waypoint = self.kml_dict["left00"][waypoint_index]
                             self.log.logger.info(
-                                "跳过第"+str(i)+"个航点:"+str(waypoint))
+                                "跳过第"+str(waypoint_index)+"个航点:"+str(waypoint))
                             waypoint_index += 1
                         else:
                             self.log.logger.info(
-                                "前往第"+str(i)+"个航点:"+str(waypoint))
+                                "前往第"+str(waypoint_index)+"个航点:"+str(waypoint))
                             bridge_status = 3
 
                     # self.log.logger.info( "current_heading: " + str(self.current_heading))
 
                     # 判断点云是否符合沿岸要求，符合要求是时进行沿岸行走,不符合要求航向向下个航点行驶,或者进入调试模式下不进入延边模式
-                    if len(self.cloud_points) > 5 and not self.yaw_PID_debug and bridge_status == 3:
+                    if len(self.cloud_points) > 5 and not self.config.yaw_PID_debug and bridge_status == 3:
                         self.get_dist_parallel_yaw()
                         if self.left_dist != None and self.left_parallel_yaw != None:
+                            hum_msg.currenrYaw = self.yaw
+                            hum_msg.leftDist = self.left_dist
+                            hum_msg.leftParallelYaw = self.left_parallel_yaw
+                            
                             # 根据与岸的距离不断调整 yaw 是其不断逼近想要的距离
                             self.set_dist_pid_control(
-                                self.except_dist, self.left_dist, self.left_parallel_yaw, rcmsg)
+                                self.config.except_dist, self.left_dist, self.left_parallel_yaw, rcmsg)
                     else:
                         # 向航点航向行驶
                         self.set_yaw_pid_control(self.current_heading, rcmsg)
@@ -302,12 +315,14 @@ class Px4Controller:
 
                     time.sleep(0.1)
             # self.log.logger.info("rcmsg:" + str(rcmsg))
+            hum_msg.config=self.config
             self.rc_override_pub.publish(rcmsg)
+            self.hum_msg_pub.publish(hum_msg)
 
     def get_min_bridge(self):
 
         # 当船距离桥小于最小值时认为需要进行过桥
-        current_bridge_distance = self.min_bridge_distance
+        current_bridge_distance = self.config.min_bridge_distance
         min_bridge_waypoints = []
         bridge_heading = None
         # 判断桥的的位置距离有多远,返回船最近距离桥的最近点且与下个航点的的航向,与当前位置与桥的航向超过180度时,忽略
@@ -375,45 +390,45 @@ class Px4Controller:
         '''
         设置参数
         '''
-        self.except_dist = config["except_dist"]  # 期望与岸的距离为 0.7
+        self.config.except_dist = config["except_dist"]  # 期望与岸的距离为 0.7
         # 设置转向 pid设置，调试时应先调整转向pid 保证能很好地转到某个yaw值
-        self.yaw_PID_debug = config["yaw_PID_debug"]  # 是否调试yawPID
+        self.config.yaw_PID_debug = config["yaw_PID_debug"]  # 是否调试yawPID
         # 调试Yaw PID时应固定一个yaw看是否能 很好地转到需要方向
-        self.yaw_PID_yaw = config["yaw_PID_yaw"]
-        self.course_range = config["course_range"]  # 设置航向范围，在原始航点最大偏转30度
-        yaw_P = config["yaw_P"]
-        yaw_I = config["yaw_I"]
-        yaw_D = config["yaw_D"]
+        self.config.yaw_PID_yaw = config["yaw_PID_yaw"]
+        self.config.course_range = config["course_range"]  # 设置航向范围，在原始航点最大偏转30度
+        self.config.yaw_P = config["yaw_P"]
+        self.config.yaw_I = config["yaw_I"]
+        self.config.yaw_D = config["yaw_D"]
         # 设置yaw pid设置
-        self.yaw_pid = PID.PID(P=yaw_P, I=yaw_I, D=yaw_D)
+        self.yaw_pid = PID.PID(P=self.config.yaw_P, I=self.config.yaw_I, D=self.config.yaw_D)
 
         # 设置距离 pid设置，
-        dist_P = config["dist_P"]
-        dist_I = config["dist_I"]
-        dist_D = config["dist_D"]
+        self.config.dist_P = config["dist_P"]
+        self.config.dist_I = config["dist_I"]
+        self.config.dist_D = config["dist_D"]
         # 设置dist_pid pid设置
-        self.dist_pid = PID.PID(P=dist_P, I=dist_I, D=dist_D)
+        self.dist_pid = PID.PID(P=self.config.dist_P, I=self.config.dist_I, D=self.config.dist_D)
 
         # 多少值参与均值滤波 越大表示反应越缓慢
-        self.filter_N = config["filter_N"]
+        self.config.filter_N = config["filter_N"]
         # 是否画出岸与船的关系
-        self.plot_debug = config["plot_debug"]
+        self.config.plot_debug = config["plot_debug"]
         # 是否写出日志
-        self.log_debug = config["log_debug"]
+        self.config.log_debug = config["log_debug"]
         # 是否打印日志
-        self.print_log_debug = config["print_log_debug"]
+        self.config.print_log_debug = config["print_log_debug"]
 
         # kml 文件名
-        self.kml_name = config["kml_name"]
+        self.config.kml_name = config["kml_name"]
 
         # 最小航点距离，当船距离航点距离最小距离时，认为已经到达航点,单位m
-        self.min_waypoint_distance = config["min_waypoint_distance"]
+        self.config.min_waypoint_distance = config["min_waypoint_distance"]
 
         # 执行过桥最近距离,小于此距离执行过桥动作
-        self.min_bridge_distance = config["min_bridge_distance"]
+        self.config.min_bridge_distance = config["min_bridge_distance"]
 
         # 地面速度
-        self.ground_speed = config["ground_speed"]
+        self.config.ground_speed = config["ground_speed"]
 
     def avg_filter(self, queue, value, filter_N):
         '''
@@ -463,8 +478,8 @@ class Px4Controller:
         '''
         根据期望角度范围设置期望角度
         '''
-        current_heading_up = self.current_heading + self.course_range
-        current_heading_down = self.current_heading - self.course_range
+        current_heading_up = self.current_heading + self.config.course_range
+        current_heading_down = self.current_heading - self.config.course_range
 
         if (current_heading_up > 360 or current_heading_down < 0) and ((current_heading_up) % 360 < except_yaw < (current_heading_down) % 360):
             if except_yaw - (current_heading_up) % 360 < (current_heading_down) % 360 - except_yaw:
@@ -609,7 +624,7 @@ class Px4Controller:
         paths.append((0, self.num))
         # 均值滤波
         self.left_dist = self.avg_filter(
-            self.left_dist_queue, line.dist, self.filter_N)
+            self.left_dist_queue, line.dist, self.config.filter_N)
         # 岸线的平行的角度
         
         min_x = float("inf")
@@ -632,12 +647,11 @@ class Px4Controller:
             path_list = [(-line.dist,min_y),(-line.dist,max_y)]
         path = self.create_path(path_list,frame_id="world")
         self.shore_line_pub.publish(path)
-               
         deflection =  line.theta*180/math.pi
         left_parallel_yaw = (self.yaw - deflection) % 360
         # 均值滤波
         self.left_parallel_yaw = self.avg_filter(
-            self.left_parallel_yaw_queue, left_parallel_yaw, self.filter_N)
+            self.left_parallel_yaw_queue, left_parallel_yaw, self.config.filter_N)
 
     def points_dist(self, point1, point2):
         '''
@@ -711,9 +725,9 @@ class Px4Controller:
         marker.type = Marker.ARROW
         
         #Marker的尺寸，单位是m
-        marker.scale.x = -0.5
-        marker.scale.y = 0.1
-        marker.scale.z = 0.1
+        marker.scale.x = 1
+        marker.scale.y = 0.2
+        marker.scale.z = 0.2
         
         #Marker的动作类型设置箭头
         marker.action = Marker.ADD
@@ -722,10 +736,11 @@ class Px4Controller:
         marker.pose.position.x = 0.0
         marker.pose.position.y = 0.0
         marker.pose.position.z = 0.0
-        marker.pose.orientation.x = 0.0
-        marker.pose.orientation.y = 0.0
-        marker.pose.orientation.z = 0.0
-        marker.pose.orientation.w = 1.0
+        orientation = tf.transformations.quaternion_from_euler( 0, 0, math.pi/2)
+        marker.pose.orientation.x = orientation[0]
+        marker.pose.orientation.y = orientation[1]
+        marker.pose.orientation.z = orientation[2]
+        marker.pose.orientation.w = orientation[3]
         
         #Marker的颜色和透明度
         marker.color.r = 0.8
@@ -751,7 +766,7 @@ class Px4Controller:
     # 速度回调函数
 
     def vfr_hub_callback(self, msg):
-        # self.ground_speed = msg.groundspeed
+        # self.config.ground_speed = msg.groundspeed
         pass
 
     def GPS_callback(self, msg):
@@ -760,6 +775,14 @@ class Px4Controller:
         '''
         self.current_gps = (msg.longitude, msg.latitude)
         self.GPS_status = msg.status.status
+        if self.current_gps !=None and self.home_gps !=None:
+            
+            self.gps_queue.put(self.current_gps)
+            if self.gps_queue.qsize()>200:
+                self.gps_queue.get()
+            gps_path = self.create_path(list(self.gps_queue.queue))
+            self.gps_path_pub.publish(gps_path)
+
 
     '''
     return yaw from current IMU
