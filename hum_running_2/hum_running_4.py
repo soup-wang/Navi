@@ -107,11 +107,11 @@ class Px4Controller:
         self.all_points = []
 
         # 均值滤波
-        # self.left_dist_queue = Queue()
-        # self.left_parallel_yaw_queue = Queue()
+        self.left_dist_queue = Queue()
+        self.left_parallel_yaw_queue = Queue()
         # 均值滤波
-        self.left_dist_queue = []
-        self.left_parallel_yaw_queue = []
+        # self.left_dist_queue = []
+        # self.left_parallel_yaw_queue = []
         # 当前gps 位置
         self.current_gps = None
         # 返航点位置
@@ -204,7 +204,8 @@ class Px4Controller:
         bridge_status = 3
         hum_msg = HumRunning()
         
-
+        first_arm = True
+        first_manual = True
         while True:
             # 切入解锁
             # self.log.logger.info("arm_state:" + str(self.arm_state))
@@ -212,7 +213,7 @@ class Px4Controller:
             if self.arm_state and self.manual_state and (rospy.is_shutdown() is False):
                 if self.current_gps != None and len(self.rc_in) > 2 and self.rc_in[5] > 1500:
                     if first_cortron_state != 2:
-                        rcmsg.channels[2] = 1700
+                        rcmsg.channels[2] = 1900
 
                         self.log.logger.info("延边模式")
                         # 首次切入延边状态进入前往地一个航点
@@ -292,46 +293,59 @@ class Px4Controller:
                             bridge_status = 3
 
                     # self.log.logger.info( "current_heading: " + str(self.current_heading))
-
-                    # 判断点云是否符合沿岸要求，符合要求是时进行沿岸行走,不符合要求航向向下个航点行驶,或者进入调试模式下不进入延边模式
-                    if len(self.cloud_points) > 5 and not self.config.yaw_PID_debug and bridge_status == 3:
+                    # print(len(self.all_points))
+                    if not self.config.yaw_PID_debug and bridge_status == 3:
                         self.get_dist_parallel_yaw()
-                        if self.left_dist != None and self.left_parallel_yaw != None and self.left_dist > 0.5:
-                            hum_msg.leftDist = self.left_dist
-                            hum_msg.leftParallelYaw = self.left_parallel_yaw
-                            
-                            # 根据与岸的距离不断调整 yaw 是其不断逼近想要的距离
-                            self.set_dist_pid_control(
-                                self.config.except_dist, self.left_dist, self.left_parallel_yaw, rcmsg,hum_msg)
+                        # 判断点云是否符合沿岸要求，符合要求是时进行沿岸行走,不符合要求航向向下个航点行驶,或者进入调试模式下不进入延边模式
+                        if len(self.all_points) > 130 :
+                            self.get_line_slope()
+                            if self.left_dist != None and self.left_parallel_yaw != None and self.left_dist > 0.5:
+                                hum_msg.leftDist = self.left_dist
+                                hum_msg.leftParallelYaw = self.left_parallel_yaw
+                                
+                                # 根据与岸的距离不断调整 yaw 是其不断逼近想要的距离
+                                self.set_dist_pid_control(
+                                    self.config.except_dist, self.left_dist, self.left_parallel_yaw, rcmsg,hum_msg)
+                            else:
+                                self.left_dist = None 
+                                self.left_parallel_yaw = None
                         else:
                             self.left_dist = None 
                             self.left_parallel_yaw = None
-                    else:
-                        self.left_dist = None 
-                        self.left_parallel_yaw = None
 
-                        # 向航点航向行驶
-                        self.set_yaw_pid_control(self.current_heading, rcmsg,hum_msg)
-                        time.sleep(0.1)
+                            # 向航点航向行驶
+                            self.set_yaw_pid_control(self.current_heading, rcmsg,hum_msg)
+                            time.sleep(0.1)
                 # 如果切换到遥控模式
                 elif len(self.rc_in) > 2 and self.rc_in[5] < 1500:
 
                     if first_cortron_state != 1:
                         self.log.logger.info("遥控模式")
                         first_cortron_state = 1
-                        # rcmsg.channels[2] = 1500
+                        rcmsg.channels[2] = 1500
 
 
                     rcmsg.channels[2] = 65535
-                    # rcmsg.channels[0] = self.rc_in[1]
-                    rcmsg.channels[0] = 65535
+                    # print(self.rc_in)
+                    rcmsg.channels[0] = self.rc_in[3]
+                    # rcmsg.channels[0] = 65535
 
 
                     time.sleep(0.1)
-            # self.log.logger.info("rcmsg:" + str(rcmsg))
-            hum_msg.config=self.config
-            self.rc_override_pub.publish(rcmsg)
-            self.hum_msg_pub.publish(hum_msg)
+                # self.log.logger.info("rcmsg:" + str(rcmsg))
+                hum_msg.config=self.config
+                self.rc_override_pub.publish(rcmsg)
+                self.hum_msg_pub.publish(hum_msg)
+                first_arm = True
+                first_manual = True
+
+            if not self.manual_state and first_manual:
+                self.log.logger.info("请切换到manual模式")
+                first_manual = False
+
+            if not self.arm_state and first_arm:
+                self.log.logger.info("请解锁")
+                first_arm  = False
 
     def get_min_bridge(self):
 
@@ -444,33 +458,70 @@ class Px4Controller:
         # 地面速度
         self.config.ground_speed = config["ground_speed"]
 
-    def avg_filter(self, avg_list, value, filter_N,last_value):
+    def avg_filter(self, queue, value, filter_N,last_value):
         '''
         均值滤波函数
         queue : 储存滤波队列
         value : 滤波的值
         filter_N : n个平均值参与滤波
         '''
-        # queue.put(value)
-        avg_list.append(value)
-        # if last_value != None:
-        #     avg_list.append(last_value) 
+        queue.put(value)
+        # avg_list.append(value)
         # 均值滤波
-        # if queue.qsize() == filter_N:
+        if queue.qsize() == filter_N:
         # print avg_list
-        if len (avg_list)>= filter_N:
+        # if len (avg_list)>= filter_N:
 
-            # list_sort = list(queue.queue)
-            avg_list.sort()
-            avg_list.pop(0)
-            avg_list.pop(-1)
+            list_sort = list(queue.queue)
+            # avg_list.sort()
+            # avg_list.pop(0)
+            # avg_list.pop(-1)
 
-            # # 弹出队列中数据
-            # queue.get()
-            # list_sort.sort()
+            # 弹出队列中数据
+            queue.get()
+            list_sort.sort()
             # 去除一个最大值一个最小值 求平均获得最终结果
-            # return round(((sum(list_sort)-list_sort[0]-list_sort[-1])/(filter_N-2)), 6)
-            return round((sum(avg_list)/len (avg_list)), 6)
+            return round(((sum(list_sort)-list_sort[0]-list_sort[-1])/(filter_N-2)), 6)
+            # return round((sum(avg_list)/len (avg_list)), 6)
+        else:
+            return last_value
+
+    def angle_avg_filter(self, queue, value, filter_N,last_value):
+        '''
+        均值滤波函数
+        queue : 储存滤波队列
+        value : 滤波的值
+        filter_N : n个平均值参与滤波
+        '''
+        queue.put(value)
+        # 均值滤波
+        if queue.qsize() == filter_N:
+            # 去除角度偏差最大的值
+            list_sort = list(queue.queue)
+           
+            if last_value !=None:
+                max_value = 0
+                min_value = 0
+                min_angle = 180
+                max_angle = 0
+                for item in list_sort:
+                    angle = angle_utils.angle_min_different_0_360(last_value,item)
+                    if max_angle < angle:
+                        max_angle = angle
+                        max_value = item
+                    if min_angle > angle:
+                        min_angle = angle
+                        min_value = item
+                if min_value in list_sort:
+                    list_sort.remove(min_value)
+                if max_value in list_sort:
+                    list_sort.remove(max_value)
+                
+            # 弹出队列中数据
+            queue.get()
+            # 去除一个最大值一个最小值 求平均获得最终结果
+            avg_angle = angle_utils.calc_angles_mean2(list_sort)
+            return  avg_angle
         else:
             return last_value
 
@@ -486,14 +537,14 @@ class Px4Controller:
         self.dist_pid.update(float(now_dist))
         self.dist_pid.sample_time = 0.1  # 采样间隔
 
+
         except_yaw = int(parallel_yaw + self.dist_pid.output)  # 得到的期望yaw 值
         # 期望yaw 应在0-360 之间
-        if except_yaw > 360:
-            except_yaw = except_yaw % 360
-        elif except_yaw < 0:
-            except_yaw = except_yaw % 360 + 360
-
         # print ("except_yaw", except_yaw)
+        # print ("self.dist_pid.output", self.dist_pid.output)
+
+        except_yaw = except_yaw % 360
+
         # 期望值yaw 在执行任务时最大值不得与当前 位置到航点位置的方位角相差30度
         except_yaw = self.except_yaw_range(except_yaw)
         # 根据期望yaw 值不断调整车身与岸距离
@@ -506,6 +557,7 @@ class Px4Controller:
         
         current_heading_up = self.current_heading + self.config.course_range
         current_heading_down = self.current_heading - self.config.course_range
+        # print(except_yaw)
 
         if (current_heading_up > 360 or current_heading_down < 0) and ((current_heading_up) % 360 < except_yaw < (current_heading_down) % 360):
             if except_yaw - (current_heading_up) % 360 < (current_heading_down) % 360 - except_yaw:
@@ -514,14 +566,16 @@ class Px4Controller:
                 except_yaw = (current_heading_down) % 360
         elif 0 < except_yaw < current_heading_down:
             if except_yaw + 360 - (current_heading_up) < current_heading_down - except_yaw:
-                except_yaw = current_heading_up
+                except_yaw = (current_heading_up) % 360
             else:
-                except_yaw = current_heading_down
+                except_yaw = (current_heading_down) % 360
         elif current_heading_up < except_yaw < 360:
             if except_yaw - (current_heading_up) < current_heading_down + 360 - except_yaw:
                 except_yaw = (current_heading_up) % 360
             else:
-                except_yaw = current_heading_down
+                except_yaw = (current_heading_down) % 360
+        # print("except_yaw: ",except_yaw)
+        
         return except_yaw
 
     def set_yaw_pid_control(self, except_yaw, rcmsg,hum_msg):
@@ -536,6 +590,7 @@ class Px4Controller:
         self.yaw_pid.yaw_update(float(self.yaw))  # 针对0 -360 yaw 值针对 设置pid
         self.yaw_pid.sample_time = 0.1  # 采样间隔
         rcmsg.channels[0] = int(1500 + self.yaw_pid.output)
+        print("self.yaw_pid.output:   ",self.yaw_pid.output)
         # 设定pwm 值最大为2000 最小为1000
         if rcmsg.channels[0] > 2000:
             rcmsg.channels[0] = 2000
@@ -582,8 +637,8 @@ class Px4Controller:
         all_points = []
         center_point = (0, 0)
         for point in self.cloud_points:
-            h_top = 1
-            h_down = 0.2
+            h_top = 0.8
+            h_down = 0.5
             # print (type(point))
             # 获取岸线高层数据
             if point[2] < h_top and point[2] > h_down:
@@ -632,10 +687,13 @@ class Px4Controller:
             quadrant_4, key=lambda item: item.k)
 
         self.all_points = all_points
+
+    def get_line_slope(self):
+        center_point = (0, 0)
         cen = CenterPointEdge.CenterPointEdge(
-            self.pointsClassification, center_point, 2)
+            self.pointsClassification, center_point, 1)
         paths = cen.contour()
-        if len(paths) > 1 :
+        if len(paths) > 3 :
             line = LineSegment.segment_Trig(
                 paths, center_point=center_point)
             # 当线段拟合程度不够时使用双折线拟合
@@ -678,7 +736,7 @@ class Px4Controller:
             deflection =  line.theta*180/math.pi
             left_parallel_yaw = (self.yaw - deflection) % 360
             # 均值滤波
-            self.left_parallel_yaw = self.avg_filter(
+            self.left_parallel_yaw = self.angle_avg_filter(
                 self.left_parallel_yaw_queue, left_parallel_yaw, self.config.filter_N,self.left_parallel_yaw)
 
     def points_dist(self, point1, point2):
@@ -753,7 +811,7 @@ class Px4Controller:
         marker.type = Marker.ARROW
         
         #Marker的尺寸，单位是m
-        marker.scale.x = 1
+        marker.scale.x = -1
         marker.scale.y = 0.2
         marker.scale.z = 0.2
         

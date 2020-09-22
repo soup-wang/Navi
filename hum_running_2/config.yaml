@@ -1,22 +1,22 @@
 # 延边程序配置文件
 
-except_dist: 5  # 期望与岸的距离为 0.7
+except_dist: 6  # 期望与岸的距离为 0.7
 
 # 设置转向 pid设置，调试时应先调整转向pid 保证能很好地转到某个yaw值
 yaw_PID_debug: False # 是否调试yawPID
 yaw_PID_yaw: 31 # 调试Yaw PID时应固定一个yaw看是否能 很好地转到需要方向
-course_range: 25 # 设置航向范围，在原始航点最大偏转30度
-yaw_P: 20.0
-yaw_I: 0.0
+course_range: 30 # 设置航向范围，在原始航点最大偏转30度
+yaw_P: 25.0
+yaw_I: 0.03
 yaw_D: 0.0
 
 # 设置距离 pid设置，
-dist_P: 15.0
-dist_I: 0.0
-dist_D: 0.0
+dist_P: 5.5
+dist_I: 0.03
+dist_D: 0.01
 
 #多少值参与均值滤波 越大表示反应越缓慢
-filter_N: 20
+filter_N: 6
 
 # 是否画出岸与船的关系
 plot_debug: True
@@ -28,10 +28,10 @@ log_debug: False
 print_log_debug: False
 
 # kml 文件名 需要 将文件放在同huming目录下
-kml_name:  xinhongtest-2.kml
+kml_name: xinhongtest-6.kml
 
 # 最小航点距离，当船距离航点距离最小距离时，认为已经到达航点,单位m
-min_waypoint_distance: 5
+min_waypoint_distance: 15
 
 # 执行过桥最近距离
 min_bridge_distance: 15

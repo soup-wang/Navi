@@ -56,5 +56,5 @@ def gps_to_meter_coord(current_gps, origin_gps=(121, 31)):
     '''
     angle = gps_get_angle(current_gps, origin_gps)*math.pi/180
     distance = gps_get_distance(current_gps, origin_gps)
-    mete_cood = (-distance*math.cos(angle), distance*math.sin(angle))
+    mete_cood = (distance*math.cos(angle), distance*math.sin(angle))
     return mete_cood
