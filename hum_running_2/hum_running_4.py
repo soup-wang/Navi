@@ -261,7 +261,9 @@ class Px4Controller:
                                 self.log.logger.info(
                                     "到达第"+str(waypoint_index)+"个航点:"+str(waypoint))
                                 self.log.logger.info("任务结束")
-                                waypoint_index = 1
+                                waypoint_index = 0
+                                waypoint = self.current_gps
+
 
                     # 若当前位置距离桥第一个点小于最小航点距离则进行
                     elif bridge_status == 0:
