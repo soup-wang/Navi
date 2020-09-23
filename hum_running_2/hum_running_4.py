@@ -213,7 +213,7 @@ class Px4Controller:
             if self.arm_state and self.manual_state and (rospy.is_shutdown() is False):
                 if self.current_gps != None and len(self.rc_in) > 2 and self.rc_in[5] > 1500:
                     if first_cortron_state != 2:
-                        rcmsg.channels[2] = 1900
+                        rcmsg.channels[2] = 1850
 
                         self.log.logger.info("延边模式")
                         # 首次切入延边状态进入前往地一个航点
@@ -243,20 +243,25 @@ class Px4Controller:
                             # 满足过桥行动
                             bridge_time = 0
                             bridge_status = 0
-
+                        
                         elif self.current_waypoint_dist < self.config.min_waypoint_distance:
+                            # print("self.current_waypoint_dist",self.current_waypoint_dist)
+                            # print("waypoint_index",waypoint_index)
 
-                            if waypoint_index < len(self.kml_dict["left"]):
+                            if (waypoint_index <=1 and self.current_waypoint_dist < 5) or 1 < waypoint_index < len(self.kml_dict["left"]):
                                 waypoint = self.kml_dict["left"][waypoint_index]
                                 waypoint_index += 1
                                 self.log.logger.info(
                                     "前往第"+str(waypoint_index)+"个航点:"+str(waypoint))
 
                             elif waypoint_index == len(self.kml_dict["left"]):
+                                # rcmsg.channels[2] = 1500
+                                # rcmsg.channels[0] = 1500
+
                                 self.log.logger.info(
                                     "到达第"+str(waypoint_index)+"个航点:"+str(waypoint))
                                 self.log.logger.info("任务结束")
-                                waypoint_index += 1
+                                waypoint_index = 1
 
                     # 若当前位置距离桥第一个点小于最小航点距离则进行
                     elif bridge_status == 0:
@@ -308,7 +313,7 @@ class Px4Controller:
                                     self.config.except_dist, self.left_dist, self.left_parallel_yaw, rcmsg,hum_msg)
                             else:
                                 self.left_dist = None 
-                                self.left_parallel_yaw = None
+                            self.left_parallel_yaw = None
                         else:
                             self.left_dist = None 
                             self.left_parallel_yaw = None
@@ -316,6 +321,12 @@ class Px4Controller:
                             # 向航点航向行驶
                             self.set_yaw_pid_control(self.current_heading, rcmsg,hum_msg)
                             time.sleep(0.1)
+                    else:
+                        self.left_dist = None 
+                        self.left_parallel_yaw = None
+                        # 向航点航向行驶
+                        self.set_yaw_pid_control(self.current_heading, rcmsg,hum_msg)
+                        time.sleep(0.1)
                 # 如果切换到遥控模式
                 elif len(self.rc_in) > 2 and self.rc_in[5] < 1500:
 
@@ -537,16 +548,14 @@ class Px4Controller:
         self.dist_pid.update(float(now_dist))
         self.dist_pid.sample_time = 0.1  # 采样间隔
 
-
-        except_yaw = int(parallel_yaw + self.dist_pid.output)  # 得到的期望yaw 值
         # 期望yaw 应在0-360 之间
-        # print ("except_yaw", except_yaw)
-        # print ("self.dist_pid.output", self.dist_pid.output)
 
-        except_yaw = except_yaw % 360
+        except_yaw = (parallel_yaw + self.dist_pid.output) % 360 # 得到的期望yaw 值
 
         # 期望值yaw 在执行任务时最大值不得与当前 位置到航点位置的方位角相差30度
         except_yaw = self.except_yaw_range(except_yaw)
+        # print ("last_except_yaw", except_yaw)
+        
         # 根据期望yaw 值不断调整车身与岸距离
         self.set_yaw_pid_control(except_yaw, rcmsg ,hum_msg)
 
@@ -554,28 +563,19 @@ class Px4Controller:
         '''
         根据期望角度范围设置期望角度
         '''
-        
-        current_heading_up = self.current_heading + self.config.course_range
-        current_heading_down = self.current_heading - self.config.course_range
-        # print(except_yaw)
+       
+        # 判断是否在区间范围内
+        if angle_utils.angle_min_different_0_360(self.current_heading,except_yaw) > self.config.course_range :
+            current_heading_up = (self.current_heading + self.config.course_range) %360
+            current_heading_down = (self.current_heading - self.config.course_range) %360
+            # 计算期望角度与哪个边界角度近取哪个角度
+            up_angle = angle_utils.angle_min_different_0_360(current_heading_up,except_yaw)
+            down_angle = angle_utils.angle_min_different_0_360(current_heading_down,except_yaw)
+            if up_angle > down_angle :
+                except_yaw =current_heading_down
+            else:
+                except_yaw = current_heading_up
 
-        if (current_heading_up > 360 or current_heading_down < 0) and ((current_heading_up) % 360 < except_yaw < (current_heading_down) % 360):
-            if except_yaw - (current_heading_up) % 360 < (current_heading_down) % 360 - except_yaw:
-                except_yaw = (current_heading_up) % 360
-            else:
-                except_yaw = (current_heading_down) % 360
-        elif 0 < except_yaw < current_heading_down:
-            if except_yaw + 360 - (current_heading_up) < current_heading_down - except_yaw:
-                except_yaw = (current_heading_up) % 360
-            else:
-                except_yaw = (current_heading_down) % 360
-        elif current_heading_up < except_yaw < 360:
-            if except_yaw - (current_heading_up) < current_heading_down + 360 - except_yaw:
-                except_yaw = (current_heading_up) % 360
-            else:
-                except_yaw = (current_heading_down) % 360
-        # print("except_yaw: ",except_yaw)
-        
         return except_yaw
 
     def set_yaw_pid_control(self, except_yaw, rcmsg,hum_msg):
@@ -590,7 +590,7 @@ class Px4Controller:
         self.yaw_pid.yaw_update(float(self.yaw))  # 针对0 -360 yaw 值针对 设置pid
         self.yaw_pid.sample_time = 0.1  # 采样间隔
         rcmsg.channels[0] = int(1500 + self.yaw_pid.output)
-        print("self.yaw_pid.output:   ",self.yaw_pid.output)
+        # print("self.yaw_pid.output:   ",self.yaw_pid.output)
         # 设定pwm 值最大为2000 最小为1000
         if rcmsg.channels[0] > 2000:
             rcmsg.channels[0] = 2000
@@ -637,8 +637,8 @@ class Px4Controller:
         all_points = []
         center_point = (0, 0)
         for point in self.cloud_points:
-            h_top = 0.8
-            h_down = 0.5
+            h_top = 1.0
+            h_down = 0.4
             # print (type(point))
             # 获取岸线高层数据
             if point[2] < h_top and point[2] > h_down:
